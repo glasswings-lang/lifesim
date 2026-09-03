@@ -350,20 +350,23 @@ fn strip(s: &str) -> String {
     s.split_whitespace().collect::<Vec<_>>().join(" ")
 }
 
-/// The first sentence, for the chronicle. Retold passages vary in length, so
-/// the chronicle takes the opening claim rather than a fixed character count.
+/// The first complete sentence.
+///
+/// There is deliberately no length limit. An earlier version cut at a hundred
+/// and fifty characters and appended an ellipsis, which meant a long opening
+/// sentence lost its ending - and the ending of a sentence is usually the part
+/// carrying the actual claim. Losing information is never an acceptable price
+/// for brevity. If the first sentence is long, it prints long; if the text has
+/// no sentence break at all, it prints whole.
 fn first_sentence(s: &str) -> String {
     let mut out = String::new();
     let mut chars = s.chars().peekable();
     while let Some(c) = chars.next() {
         out.push(c);
-        if c == '.' || c == '?' {
-            if matches!(chars.peek(), Some(' ') | None) && out.chars().count() > 24 { break; }
-        }
-        if out.chars().count() > 150 {
-            // Break at a word, never through the middle of one.
-            if let Some(i) = out.rfind(' ') { out.truncate(i); }
-            out.push_str("...");
+        if (c == '.' || c == '?' || c == '!')
+            && matches!(chars.peek(), Some(' ') | None)
+            && out.chars().count() > 24
+        {
             break;
         }
     }

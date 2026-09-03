@@ -41,8 +41,10 @@ fn main() {
                 Ok(mut cfg) => {
                     if args[0] == "explore" {
                         cfg.explore = true;
-                        cfg.terse = true;
                         cfg.pace = 0;
+                        // Not terse by default. Shortening the prose turned out
+                        // to cost information, and information is the thing the
+                        // reader came for. --terse is there if you want it.
                         // Offline prose unless asked otherwise: exploring means
                         // stopping constantly, and waiting on a model at every
                         // stop would be slow and would spend tokens on passages
