@@ -72,6 +72,10 @@ pub struct Scribe {
     pending: Vec<Slot>,
     chapter_title: String,
     pub toaster: Toaster,
+    /// Cut every passage to its opening claim. The full sentence is still what
+    /// the simulation computed; this only decides how much of it is pushed at
+    /// the reader unasked.
+    pub terse: bool,
 }
 
 impl Scribe {
@@ -86,6 +90,7 @@ impl Scribe {
             pending: Vec::new(),
             chapter_title: "Opening".into(),
             toaster: Toaster::new(false),
+            terse: false,
         }
     }
 
@@ -259,6 +264,7 @@ impl Scribe {
                 self.rest(1.5);
             }
             Slot::Prose { year, text, indent, chronicle, .. } => {
+                let text = if self.terse { first_sentence(&text) } else { text };
                 let body = match year {
                     Some(y) => format!("[{}]  {}", units::stamp(y), text),
                     None => text.clone(),
@@ -354,7 +360,12 @@ fn first_sentence(s: &str) -> String {
         if c == '.' || c == '?' {
             if matches!(chars.peek(), Some(' ') | None) && out.chars().count() > 24 { break; }
         }
-        if out.chars().count() > 150 { out.push_str("..."); break; }
+        if out.chars().count() > 150 {
+            // Break at a word, never through the middle of one.
+            if let Some(i) = out.rfind(' ') { out.truncate(i); }
+            out.push_str("...");
+            break;
+        }
     }
     out.trim().to_string()
 }

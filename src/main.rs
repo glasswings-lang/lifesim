@@ -18,6 +18,7 @@ mod planets;
 mod life;
 mod llm;
 mod toast;
+mod explore;
 
 use rng::Rng;
 use units::*;
@@ -34,10 +35,22 @@ fn main() {
         return;
     }
     match args[0].as_str() {
-        "run" | "watch" | "tour" => {
-            let watching = args[0] != "run";
+        "run" | "watch" | "tour" | "explore" => {
+            let watching = args[0] == "watch" || args[0] == "tour";
             match parse(&args[1..], watching) {
-                Ok(cfg) => run(cfg),
+                Ok(mut cfg) => {
+                    if args[0] == "explore" {
+                        cfg.explore = true;
+                        cfg.terse = true;
+                        cfg.pace = 0;
+                        // Offline prose unless asked otherwise: exploring means
+                        // stopping constantly, and waiting on a model at every
+                        // stop would be slow and would spend tokens on passages
+                        // nobody asked to read.
+                        if cfg.narrator.is_none() { cfg.narrator = Some(Backend::Builtin); }
+                    }
+                    run(cfg)
+                }
                 Err(e) => { eprintln!("{}", e); eprintln!("Try: lifesim help"); }
             }
         }
@@ -61,6 +74,8 @@ struct Config {
     model: Option<String>,
     toast: bool,
     ollama_host: Option<String>,
+    explore: bool,
+    terse: bool,
 }
 
 fn parse(args: &[String], watching: bool) -> Result<Config, String> {
@@ -75,6 +90,8 @@ fn parse(args: &[String], watching: bool) -> Result<Config, String> {
         model: None,
         toast: false,
         ollama_host: None,
+        explore: false,
+        terse: false,
     };
     let mut i = 0;
     while i < args.len() {
@@ -126,6 +143,7 @@ fn parse(args: &[String], watching: bool) -> Result<Config, String> {
             "--log" => { cfg.log = Some(need(i)?); i += 2; }
             "--persist" => { cfg.persist = true; i += 1; }
             "--toast" => { cfg.toast = true; i += 1; }
+            "--terse" => { cfg.terse = true; i += 1; }
             o => return Err(format!("I do not know the option \"{}\".", o)),
         }
     }
@@ -155,6 +173,7 @@ fn run(cfg: Config) {
     let label = narrator.label();
     let mut s = Scribe::new(cfg.voice, cfg.detail, cfg.pace, narrator);
     s.toaster = toast::Toaster::new(cfg.toast);
+    s.terse = cfg.terse;
     if let Some(path) = &cfg.log {
         match std::fs::File::create(path) {
             Ok(f) => s.log = Some(f),
@@ -250,7 +269,7 @@ fn run(cfg: Config) {
 
     // ---- Act IV: life ----
     let mut life_rng = rng.fork(0xB10);
-    let outcome = fourth_act(&mut s, &mut life_rng, &star, &home, cfg.persist);
+    let outcome = fourth_act(&mut s, &mut life_rng, &star, &home, cfg.persist, cfg.explore);
     closing(&mut s, cfg.seed, Some(outcome));
 }
 
@@ -299,6 +318,7 @@ struct Outcome {
 
 fn fourth_act(
     s: &mut Scribe, rng: &mut Rng, star: &Star, home: &Planet, persist: bool,
+    explore: bool,
 ) -> Outcome {
     s.chapter(&format!("IV. Planet {}, and What Happened On It", home.name));
 
@@ -354,8 +374,8 @@ fn fourth_act(
     }
 
     let mut bio = Biosphere {
-        species: Vec::new(), next_id: 1, env, total_biomass: 1.0, myr: t,
-        rust: 8.0,
+        species: Vec::new(), archive: Vec::new(), next_id: 1, env,
+        total_biomass: 1.0, myr: t, rust: 8.0,
     };
     let mut first = Species {
         id: 0, genome: Genome::seed(rng), tr: [0.0; N_CH], rw: [0.0; N_CH],
@@ -363,6 +383,7 @@ fn fourth_act(
     };
     first.rw = first.genome.raw();
     first.tr = express(&first.rw, bio.env.o2);
+    bio.record(&first);
     bio.species.push(first);
     out.life = true;
     out.reached.life = true;
@@ -390,6 +411,15 @@ fn fourth_act(
     };
 
     let stop_at = if persist { horizon } else { horizon.min(t + 6000.0) };
+    let mut exploring = explore;
+    let mut told = s.chronicle.len();
+    let mut skip_until = 0.0f64;
+    if exploring {
+        s.flush();
+        s.raw("");
+        s.raw("You are on the surface of a world where something has just started copying itself.");
+        s.raw("It will now run. Press enter to go to the next thing that happens, or type help.");
+    }
 
     while t < stop_at {
         t += 1.0;
@@ -509,6 +539,28 @@ fn fourth_act(
 
         // --- milestones, detected rather than scheduled ---
         report_milestones(s, &mut bio, &mut out.reached, t, &p);
+
+        // --- pause and let somebody look around ---
+        if exploring {
+            // Passages are buffered and only reach the chronicle when they are
+            // printed, so the flush has to come first. Without it the count
+            // never moves and the prompt appears exactly once, which is what it
+            // did before this line existed.
+            s.flush();
+            if s.chronicle.len() > told && t >= skip_until {
+                match explore::prompt(&bio, &p, star, t) {
+                    explore::Step::Go => {}
+                    explore::Step::Advance(n) => { skip_until = t + n; }
+                    explore::Step::Release => { exploring = false; }
+                    explore::Step::Quit => {
+                        out.peak_species = peak;
+                        out.last_line = "Left early, while it was still going.".into();
+                        return out;
+                    }
+                }
+            }
+            told = s.chronicle.len();
+        }
 
         // --- the state of the world, reported only when it changes ---
         //
@@ -661,14 +713,14 @@ fn report_milestones(
                          manages it inherits the ocean. There is a waste product. \
                          Oxygen is violently reactive and nothing alive can \
                          handle it, and for now it all goes straight into the \
-                         iron dissolved in the sea, which rusts and sinks. The \
-                         ocean floor turns red in bands. The air does not change \
-                         at all.");
+                         iron dissolved in the sea, which binds it and settles. \
+                         The air does not change at all, and will not for a \
+                         billion years.");
     }
     if !r.great_oxidation && bio.env.o2 > 0.02 {
         r.great_oxidation = true;
         s.beat(t * 1e6, &format!(
-            "The rust runs out. With nothing left to absorb it, oxygen goes into \
+            "The sea has nothing left to absorb it. Oxygen goes into \
              the air and stays there, and the air is now {} oxygen and climbing. \
              This is the worst thing that has ever happened to life on this \
              planet. Almost everything alive is anaerobic and oxygen tears its \
@@ -904,6 +956,10 @@ COMMANDS
 
   lifesim run              Run a universe as fast as the machine can.
   lifesim watch            The same, but paced, so you can read it as it goes.
+  lifesim explore          Walk around inside it. The run stops each time
+                           something happens and you can look at any creature,
+                           follow it back to what it came from, ask what is in
+                           the ocean, or check the sky, then let it carry on.
   lifesim guide            What all the terms mean, in plain language.
   lifesim help             This.
 
@@ -918,6 +974,8 @@ OPTIONS
   --pace 700               Milliseconds to rest between paragraphs.
                            0 is as fast as possible. "watch" defaults to 700.
   --log run.txt            Also write everything to a file.
+  --terse                  One sentence per event instead of a paragraph.
+                           Explore mode uses this by default.
   --toast                  Raise a Windows notification when something
                            actually happens, so you can leave the run in the
                            background. Only real events, never status lines,

@@ -31,6 +31,7 @@ Four commands:
 |---|---|
 | `lifesim watch` | Runs a universe slowly enough to read as it goes. |
 | `lifesim run` | The same, at full speed — about three seconds for 13 billion years. |
+| `lifesim explore` | Walk around inside a running world. See below. |
 | `lifesim guide` | Explains every term it uses, in plain language. |
 | `lifesim help` | The options list. |
 
@@ -51,6 +52,41 @@ Useful options:
 The same seed always rebuilds exactly the same universe, on any machine,
 forever. If you get one you like, write the number down. The last line of every
 run tells you the number.
+
+## Exploring
+
+`lifesim run` reads you a summary. `lifesim explore` lets you stop and look.
+
+```bash
+lifesim explore --seed hearth
+```
+
+The run pauses every time something happens. At the prompt:
+
+| | |
+|---|---|
+| *(enter)* | carry on to the next thing that happens |
+| `go 50` | let fifty million years pass, whatever happens |
+| `look NAME` | everything known about one lineage |
+| `back NAME` | walk its ancestry, showing only where something changed |
+| `kin NAME` | what split off from it |
+| `life` | what is alive now, biggest first |
+| `ocean` / `land` | what lives where |
+| `world` | the planet right now: air, temperature, water, day length |
+| `sky` | the star, its colour, its lifetime, this world's orbit |
+| `run` | stop asking and go to the end |
+
+The point is that all of this was always being computed and then thrown away.
+Every lineage has a genome, a parent, sixteen traits, and a date it appeared.
+`back` is the one worth trying first — it walks a creature up its own ancestry
+and prints only the rungs where it became a different animal, so you can watch
+a sessile single cell that was poisoned by oxygen turn into a dog-sized hunter
+that breathes it.
+
+Explore mode is terse by default and uses the built-in prose rather than a
+language model, because stopping constantly to wait on a model would be slow
+and would spend tokens narrating passages nobody asked to read. Pass
+`--narrator openrouter` if you want it anyway.
 
 ## How this reads out loud
 

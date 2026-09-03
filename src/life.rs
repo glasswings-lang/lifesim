@@ -324,8 +324,25 @@ pub struct Env {
 }
 
 /// The biosphere, and the planet it is slowly rebuilding.
+/// A lineage that existed, whether or not it still does. Kept so that you can
+/// ask what something came from and follow it back, which you cannot do if the
+/// only record of a species is that it is currently alive.
+#[derive(Clone)]
+pub struct Archived {
+    pub id: u64,
+    pub parent: u64,
+    pub name: String,
+    pub born: f64,
+    pub died: Option<f64>,
+    pub desc: String,
+    pub genes: usize,
+    pub peak: f64,
+}
+
 pub struct Biosphere {
     pub species: Vec<Species>,
+    /// Every lineage that ever appeared here, living or not.
+    pub archive: Vec<Archived>,
     pub next_id: u64,
     pub env: Env,
     #[allow(dead_code)]
@@ -336,6 +353,24 @@ pub struct Biosphere {
     /// something like a billion years while this drains, and during the whole
     /// of that time the atmosphere does not change at all. Then it runs out.
     pub rust: f64,
+}
+
+impl Biosphere {
+    pub fn record(&mut self, sp: &Species) {
+        self.archive.push(Archived {
+            id: sp.id, parent: sp.parent, name: sp.name.clone(), born: sp.born,
+            died: None, desc: sp.describe(), genes: sp.genome.genes.len(),
+            peak: sp.share,
+        });
+    }
+    pub fn find(&self, needle: &str) -> Option<&Archived> {
+        let n = needle.to_lowercase();
+        self.archive.iter().find(|a| a.name.to_lowercase() == n)
+            .or_else(|| self.archive.iter().find(|a| a.name.to_lowercase().starts_with(&n)))
+    }
+    pub fn alive(&self, id: u64) -> Option<&Species> {
+        self.species.iter().find(|s| s.id == id)
+    }
 }
 
 // -------------------------------------------------------------- the reactor --
@@ -564,6 +599,20 @@ pub fn step(bio: &mut Biosphere, rng: &mut Rng, p: &Planet, star: &Star) {
     if tot > 0.0 {
         for s in bio.species.iter_mut() { s.share /= tot; }
     }
+    // Note who is gone, and how big anyone ever got, before dropping them.
+    {
+        let now = bio.myr;
+        let living: Vec<(u64, f64, String, usize)> = bio.species.iter()
+            .map(|s| (s.id, s.share, s.describe(), s.genome.genes.len())).collect();
+        for a in bio.archive.iter_mut() {
+            if let Some((_, share, desc, genes)) = living.iter().find(|(id, ..)| *id == a.id) {
+                if *share > a.peak { a.peak = *share; a.desc = desc.clone(); a.genes = *genes; }
+                a.died = None;
+            } else if a.died.is_none() {
+                a.died = Some(now);
+            }
+        }
+    }
     bio.species.retain(|s| s.share > 8.0e-6 && s.share.is_finite());
 
     // --- the planet answers back ---
@@ -625,6 +674,7 @@ pub fn step(bio: &mut Biosphere, rng: &mut Rng, p: &Planet, star: &Star) {
             let take = bio.species[i].share * 0.22;
             bio.species[i].share -= take;
             child.share = take;
+            bio.record(&child);
             bio.species.push(child);
         }
     }
