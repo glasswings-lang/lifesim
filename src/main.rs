@@ -271,8 +271,27 @@ fn run(cfg: Config) {
 
     // ---- Act IV: life ----
     let mut life_rng = rng.fork(0xB10);
-    let outcome = fourth_act(&mut s, &mut life_rng, &star, &home, cfg.persist, cfg.explore);
+    let (outcome, world) = fourth_act(&mut s, &mut life_rng, &star, &home,
+                                      cfg.persist, cfg.explore);
     closing(&mut s, cfg.seed, Some(outcome));
+
+    // Stay open afterwards. Nothing is running any more and no more time will
+    // pass, but everything that lived here is still here to be asked about.
+    if cfg.explore {
+        if let Some((bio, planet)) = world {
+            s.raw("");
+            for l in narrate::wrap("This world is finished. Nothing more will happen on it, but everything that ever lived here is still here to look at. Try: life, or look at any name, or back to follow one to its ancestors.",
+                78, 0) { s.raw(&l); }
+            let t_end = bio.myr;
+            loop {
+                match explore::prompt(&bio, &planet, &star, t_end, "the world has ended") {
+                    explore::Step::Quit | explore::Step::Release => break,
+                    _ => println!("
+  There is no more time on this world. You can still look at anything that lived here."),
+                }
+            }
+        }
+    }
 }
 
 /// How promising is this world? Used only to choose which world to follow.
@@ -321,7 +340,7 @@ struct Outcome {
 fn fourth_act(
     s: &mut Scribe, rng: &mut Rng, star: &Star, home: &Planet, persist: bool,
     explore: bool,
-) -> Outcome {
+) -> (Outcome, Option<(Biosphere, Planet)>) {
     s.chapter(&format!("IV. Planet {}, and What Happened On It", home.name));
 
     let mut p = home.clone();
@@ -341,7 +360,7 @@ fn fourth_act(
              colour of the sky.",
             missing.join("; ")));
         out.last_line = "Sterile. The preconditions were never met.".into();
-        return out;
+        return (out, None);
     }
     if !missing.is_empty() {
         s.say(&format!("The odds are poor: {}. But poor is not zero, and there \
@@ -372,7 +391,7 @@ fn fourth_act(
                          a copy of itself that could also make a copy. The world \
                          stays chemistry.");
         out.last_line = "Chemistry, but never biology.".into();
-        return out;
+        return (out, None);
     }
 
     let mut bio = Biosphere {
@@ -412,7 +431,7 @@ fn fourth_act(
         last_report: 0.0, last_shock: String::new(),
     };
 
-    let stop_at = if persist { horizon } else { horizon.min(t + 6000.0) };
+    let mut stop_at = if persist { horizon } else { horizon.min(t + 6000.0) };
     let mut exploring = explore;
     let mut told = s.chronicle.len();
     let mut skip_until = 0.0f64;
@@ -423,6 +442,10 @@ fn fourth_act(
         s.raw("It will now run. Press enter to go to the next thing that happens, or type help.");
     }
 
+    // The stopping point is a choice, not an ending. When it arrives and there
+    // is still star left, offer to move it rather than telling somebody to
+    // start the whole thing again with a different flag.
+    'running: loop {
     while t < stop_at {
         t += 1.0;
         life::step(&mut bio, rng, &p, star);
@@ -433,7 +456,7 @@ fn fourth_act(
                              there is no second start because the conditions that \
                              allowed the first one are used up.");
             out.last_line = "Life began and then ended.".into();
-            return out;
+            return (out, None);
         }
         peak = peak.max(bio.species.len());
 
@@ -555,11 +578,17 @@ fn fourth_act(
                 match explore::prompt(&bio, &p, star, t, &last) {
                     explore::Step::Go => {}
                     explore::Step::Advance(n) => { skip_until = t + n; }
-                    explore::Step::Release => { exploring = false; }
+                    explore::Step::Release => {
+                        // "Run" means run to the end of the star, not to an
+                        // arbitrary stopping point somebody has to argue with.
+                        exploring = false;
+                        stop_at = horizon;
+                    }
+                    explore::Step::More(n) => { stop_at = (stop_at + n).min(horizon); }
                     explore::Step::Quit => {
                         out.peak_species = peak;
                         out.last_line = "Left early, while it was still going.".into();
-                        return out;
+                        return (out, None);
                     }
                 }
             }
@@ -649,6 +678,40 @@ fn fourth_act(
         }
     }
 
+    // The stopping point is a choice, not an ending. When it arrives and there
+    // is still star left, offer to move it rather than telling somebody to run
+    // the whole thing again with a different flag.
+    if exploring && stop_at < horizon - 1.0 {
+        s.flush();
+        s.raw("");
+        for l in narrate::wrap(&format!(
+            "This is as far as it was set to run, but the star is still burning and has about {} left in it. Say \"more\" to carry on from here, or \"run\" to go all the way to the end of the star.",
+            years((horizon - stop_at) * 1e6)), 78, 0) { s.raw(&l); }
+        let last = s.chronicle.last().map(|b| b.headline.clone()).unwrap_or_default();
+        match explore::prompt(&bio, &p, star, t, &last) {
+            explore::Step::More(n) => {
+                stop_at = (stop_at + n).min(horizon);
+                continue 'running;
+            }
+            explore::Step::Release => {
+                stop_at = horizon;
+                exploring = false;
+                continue 'running;
+            }
+            explore::Step::Quit => {
+                out.peak_species = peak;
+                out.last_line = "Left early, while it was still going.".into();
+                return (out, None);
+            }
+            _ => {
+                stop_at = (stop_at + 3000.0).min(horizon);
+                continue 'running;
+            }
+        }
+    }
+    break 'running;
+    }
+
     out.peak_species = peak;
 
     // --- the ending the star chooses ---
@@ -672,7 +735,10 @@ fn fourth_act(
 
     survey_life(s, &bio, &out.reached);
     out.last_line = final_line(&out.reached);
-    out
+    // The world is handed back rather than dropped. The end of a run is the
+    // most interesting moment to look around in, and an interface that offers
+    // to let you look at things should not have quietly stopped being able to.
+    (out, Some((bio, p)))
 }
 
 fn dominant(bio: &Biosphere) -> Option<&Species> {

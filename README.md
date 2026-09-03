@@ -66,7 +66,8 @@ Enter moves it on. Enter is the whole interaction — anywhere in the window,
 whatever has focus, except while typing in the ask box.
 
 Buttons for the things you want most: next thing that happens, what just
-happened, what is alive, this world, start a new world, speech on or off. An
+happened, what is alive, this world, keep going, start a new world, find a
+world where something happens, speech on or off. An
 ask box for anything else (`look Yyusteosh`, `back Yyusteosh`, `ocean`,
 `go 500`).
 
@@ -108,7 +109,8 @@ The run pauses every time something happens. At the prompt:
 | `sky` | the star, its colour, its lifetime, this world's orbit |
 | `huh` | what just happened, in small words |
 | `huh oxygen` | what any word means, in small words |
-| `run` | stop asking and go to the end |
+| `more` | carry on past where it was going to stop |
+| `run` | stop asking and go to the end of the star |
 
 `huh` deserves its own note. The rest of this program assumes you already know
 what metallicity and redshift and photosynthesis are. That is a property of the

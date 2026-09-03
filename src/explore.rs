@@ -30,6 +30,9 @@ pub enum Step {
     Advance(f64),
     /// Stop asking; run to the end.
     Release,
+    /// Push the end further out. The stopping point is arbitrary, not physics,
+    /// so it should be movable from inside rather than by restarting.
+    More(f64),
     Quit,
 }
 
@@ -68,6 +71,12 @@ pub fn prompt(bio: &Biosphere, p: &Planet, star: &Star, t: f64, last: &str) -> S
                 }
             }
             "run" | "release" => return Step::Release,
+            "more" | "keep" | "continue" | "longer" => {
+                let n = arg.trim_end_matches(|c: char| c.is_alphabetic()).trim()
+                    .parse::<f64>().unwrap_or(3000.0);
+                let myr = if arg.to_lowercase().contains('g') { n * 1000.0 } else { n };
+                return Step::More(if myr > 0.0 { myr } else { 3000.0 });
+            }
             "q" | "quit" | "exit" => return Step::Quit,
             "look" | "l" => look(bio, &arg),
             "back" | "parent" => back(bio, &arg),
@@ -97,6 +106,7 @@ fn help() {
   ocean / land     what lives where
   world            this planet right now
   sky              the star and the rest of the system
+  more             carry on past where it was going to stop
   run              stop asking and go to the end
   quit             leave
 ");

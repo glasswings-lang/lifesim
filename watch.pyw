@@ -135,10 +135,12 @@ class Window(wx.Frame):
         self.life_btn = wx.Button(panel, label="What is &alive")
         self.world_btn = wx.Button(panel, label="This &world")
         self.new_btn = wx.Button(panel, label="&Start a new world")
+        self.more_btn = wx.Button(panel, label="&Keep going")
         self.find_btn = wx.Button(panel, label="&Find a world where something happens")
         self.speak_btn = wx.Button(panel, label="&Speech: on")
         for b in (self.next_btn, self.huh_btn, self.life_btn,
-                  self.world_btn, self.new_btn, self.find_btn, self.speak_btn):
+                  self.world_btn, self.more_btn, self.new_btn, self.find_btn,
+                  self.speak_btn):
             btns.Add(b, 0, wx.RIGHT, 6)
         root.Add(btns, 0, wx.LEFT | wx.RIGHT | wx.BOTTOM, 8)
 
@@ -148,6 +150,7 @@ class Window(wx.Frame):
         self.huh_btn.Bind(wx.EVT_BUTTON, lambda e: self.send("huh"))
         self.life_btn.Bind(wx.EVT_BUTTON, lambda e: self.send("life"))
         self.world_btn.Bind(wx.EVT_BUTTON, lambda e: self.send("world"))
+        self.more_btn.Bind(wx.EVT_BUTTON, lambda e: self.send("more"))
         self.new_btn.Bind(wx.EVT_BUTTON, self.on_new)
         self.find_btn.Bind(wx.EVT_BUTTON, self.on_find)
         self.speak_btn.Bind(wx.EVT_BUTTON, self.on_speak_toggle)
