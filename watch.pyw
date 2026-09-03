@@ -52,6 +52,14 @@ EXE = os.path.join(HERE, "target", "release",
                    "lifesim.exe" if os.name == "nt" else "lifesim")
 READY = "<<<LIFESIM-READY"
 
+# Outcomes worth stopping for. Most worlds never get past microbes - that is
+# the honest result and the simulation should keep producing it - but somebody
+# who opened this to watch life get born should not have to sit through six
+# universes of pond scum to find out that is normal.
+LIVELY = (
+    "Bodies, but", "Animals with", "Minds,", "Tool users", "A civilisation",
+)
+
 NARRATORS = [
     ("Plain words, offline (nothing sent anywhere)", ["--narrator", "builtin"]),
     ("A model writes it, free", ["--narrator", "openrouter"]),
@@ -127,9 +135,10 @@ class Window(wx.Frame):
         self.life_btn = wx.Button(panel, label="What is &alive")
         self.world_btn = wx.Button(panel, label="This &world")
         self.new_btn = wx.Button(panel, label="&Start a new world")
+        self.find_btn = wx.Button(panel, label="&Find a world where something happens")
         self.speak_btn = wx.Button(panel, label="&Speech: on")
         for b in (self.next_btn, self.huh_btn, self.life_btn,
-                  self.world_btn, self.new_btn, self.speak_btn):
+                  self.world_btn, self.new_btn, self.find_btn, self.speak_btn):
             btns.Add(b, 0, wx.RIGHT, 6)
         root.Add(btns, 0, wx.LEFT | wx.RIGHT | wx.BOTTOM, 8)
 
@@ -140,6 +149,7 @@ class Window(wx.Frame):
         self.life_btn.Bind(wx.EVT_BUTTON, lambda e: self.send("life"))
         self.world_btn.Bind(wx.EVT_BUTTON, lambda e: self.send("world"))
         self.new_btn.Bind(wx.EVT_BUTTON, self.on_new)
+        self.find_btn.Bind(wx.EVT_BUTTON, self.on_find)
         self.speak_btn.Bind(wx.EVT_BUTTON, self.on_speak_toggle)
         self.ask.Bind(wx.EVT_TEXT_ENTER, self.on_ask)
 
@@ -156,6 +166,7 @@ class Window(wx.Frame):
         # a button rather than a setting because it needs to be one keypress
         # away the moment it turns out to be wrong.
         self.speaking = True
+        self.finder: "queue.Queue[tuple] | None" = None
 
         self.timer = wx.Timer(self)
         self.Bind(wx.EVT_TIMER, self.on_tick, self.timer)
@@ -163,7 +174,9 @@ class Window(wx.Frame):
 
         self.Centre()
         self.Show()
-        self.start_world(str(random.randint(1, 10 ** 12)))
+        # A known-good world to open on. Random would be honest and would also
+        # mean most people's first ever run is pond scum for six billion years.
+        self.start_world("hearth")
 
     # -- running a world ---------------------------------------------------
 
@@ -198,6 +211,44 @@ class Window(wx.Frame):
             self.engine.send(text)
         self.log.SetFocus()
 
+    def on_find(self, _evt) -> None:
+        if self.finder is not None:
+            return
+        self.finder = queue.Queue()
+        self.find_btn.Disable()
+        self.announce("Looking for a world where something happens. Most worlds "
+                      "stay microbes forever, so this may take a few goes.")
+        threading.Thread(target=self._search, args=(self.finder,),
+                         daemon=True).start()
+
+    def _search(self, out: "queue.Queue[tuple]") -> None:
+        """Run whole universes quickly and keep the first interesting one.
+
+        This is a search, not a cheat. Every universe tried is really built and
+        really simulated; we are only choosing which one to sit and watch,
+        the way you would pick which planet to visit.
+        """
+        for attempt in range(1, 25):
+            seed = str(random.randint(1, 10 ** 12))
+            try:
+                r = subprocess.run(
+                    [EXE, "run", "--seed", seed, "--detail", "brief",
+                     "--narrator", "builtin"],
+                    capture_output=True, text=True, timeout=180,
+                    creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))
+            except Exception:
+                continue
+            outcome = ""
+            for line in r.stdout.splitlines():
+                if line.startswith(LIVELY):
+                    outcome = line.strip()
+                    break
+            if outcome:
+                out.put(("found", seed, outcome))
+                return
+            out.put(("tried", attempt, ""))
+        out.put(("gave-up", 0, ""))
+
     def on_speak_toggle(self, _evt) -> None:
         self.speaking = not self.speaking
         self.speak_btn.SetLabel("&Speech: on" if self.speaking else "&Speech: off")
@@ -223,6 +274,7 @@ class Window(wx.Frame):
     # -- output ------------------------------------------------------------
 
     def on_tick(self, _evt) -> None:
+        self.poll_finder()
         if not self.engine:
             return
         arrived = False
@@ -258,6 +310,36 @@ class Window(wx.Frame):
             self.last_line_at = now
         elif self.buffer and self.last_line_at and now - self.last_line_at > 250:
             self.flush()
+
+    def poll_finder(self) -> None:
+        if self.finder is None:
+            return
+        while True:
+            try:
+                kind, a, b = self.finder.get_nowait()
+            except queue.Empty:
+                return
+            if kind == "tried":
+                if a % 3 == 0:
+                    self.announce(f"Still looking. {a} worlds so far, all of them "
+                                  f"microbes.")
+            elif kind == "found":
+                self.finder = None
+                self.find_btn.Enable()
+                self.announce(f"Found one. {b} Starting it now.")
+                self.start_world(a)
+                return
+            else:
+                self.finder = None
+                self.find_btn.Enable()
+                self.announce("Could not find a lively one this time. That does "
+                              "happen. Try again.")
+                return
+
+    def announce(self, text: str) -> None:
+        self.write(text + "\n\n")
+        if self.speaking and nvda_speak is not None:
+            wx.CallAfter(nvda_speak.speak, text)
 
     def flush(self, extra: str = "") -> None:
         """Show and speak whatever has arrived since the last pause."""
