@@ -53,6 +53,38 @@ The same seed always rebuilds exactly the same universe, on any machine,
 forever. If you get one you like, write the number down. The last line of every
 run tells you the number.
 
+## The window
+
+There is a wx window. Double-click `watch.pyw`, or:
+
+```bash
+pythonw watch.pyw
+```
+
+No flags, no terminal, no arguments to remember. It opens, a world starts, and
+Enter moves it on. Enter is the whole interaction — anywhere in the window,
+whatever has focus, except while typing in the ask box.
+
+Buttons for the things you want most: next thing that happens, what just
+happened, what is alive, this world, start a new world, speech on or off. An
+ask box for anything else (`look Yyusteosh`, `back Yyusteosh`, `ocean`,
+`go 500`).
+
+It speaks through `nvdaController_speakText` using the controller client DLL,
+which is why this is a window and not a terminal or a web page: it says things
+on purpose, at a moment chosen deliberately, instead of hoping a screen reader
+notices that something changed. Text arrives a passage at a time so speech
+comes in paragraphs rather than as one unstoppable block, and the log is only
+ever appended to — nothing refreshes or re-renders underneath the reader.
+
+The NVDA conventions here are lifted from Hearthkeep rather than reinvented:
+read-only multiline log, `AppendText` never `SetValue`, plain `wx.Button`
+throughout because `wx.CheckBox` announces as "button" on Windows, and speech
+queued through `wx.CallAfter` so it lands after the UI settles.
+
+If NVDA is not running, or `nvdaControllerClient.dll` is missing, the window
+works exactly the same and simply does not speak.
+
 ## Exploring
 
 `lifesim run` reads you a summary. `lifesim explore` lets you stop and look.

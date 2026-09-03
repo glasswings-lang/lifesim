@@ -35,8 +35,17 @@ pub enum Step {
 
 pub fn prompt(bio: &Biosphere, p: &Planet, star: &Star, t: f64, last: &str) -> Step {
     let stdin = io::stdin();
+    // A front end driving this as a subprocess needs to know when a batch of
+    // output has finished and it is our turn to wait. A prompt written without
+    // a newline is invisible to a line reader, so when something is driving us
+    // we mark the boundary explicitly on its own line.
+    let gui = std::env::var("LIFESIM_GUI").is_ok();
     loop {
-        print!("\n{} > ", stamp(t * 1e6));
+        if gui {
+            println!("\n<<<LIFESIM-READY {}>>>", stamp(t * 1e6));
+        } else {
+            print!("\n{} > ", stamp(t * 1e6));
+        }
         let _ = io::stdout().flush();
         let mut line = String::new();
         if stdin.lock().read_line(&mut line).unwrap_or(0) == 0 {
