@@ -1,0 +1,562 @@
+Universe 16415847917753018577.
+
+Everything below was computed, not chosen. Nothing here is written down in
+advance.
+
+Narrated by anthropic/claude-sonnet-4.5, through OpenRouter. The physics is
+fixed by the seed and is identical every time; the telling is not, so this run
+will read differently from the last one even where the same things happen.
+
+I. The First Three Minutes, and the Long Dark After
+---------------------------------------------------
+
+[the first instant] Time begins. There is no earlier moment to refer to, no
+    countdown, no approach. At the smallest interval that physics will later
+    recognize as meaningful, everything that will ever exist occupies a region
+    far smaller than a proton. The temperature has no name yet because nothing
+    has cooled enough to define a scale.
+
+[5e-36 seconds] At 5e-36 seconds, the space between things begins to stretch.
+    Not the particles themselves but the distance separating them, doubling
+    over and over, faster than light can cross the widening gap. This is
+    permitted because the speed limit governs only what moves through space,
+    not the expansion of space itself. By the time this surge ends, the
+    universe has grown by a factor exceeding the total number of atoms it will
+    eventually hold.
+The inflationary expansion stops. Whatever field sustained it decays, and its
+energy floods back into particles and radiation, reheating the universe at the
+price of erasing the mechanism that drove the growth. But the expansion has
+already stretched quantum fluctuations from subatomic scales to cosmic ones.
+These ripples in density, one part in a hundred thousand above the average,
+will later be measured at a depth of 0.822 in this universe, compared to the
+0.811 observed in ours. Every galaxy that will ever coalesce is already
+faintly written into the distribution of matter.
+
+[0.000 seconds] At 0.000 seconds, the temperature drops below two trillion
+    kelvin. Quarks, which have moved freely in the plasma, can no longer
+    escape one another's grip and condense into protons and neutrons. Matter
+    meets antimatter and the two annihilate with near-perfect efficiency. For
+    every billion pairs that destroy each other, a single particle of matter
+    persists. No one has yet explained why the symmetry broke this way.
+    Everything solid, every star and planet and living thing, is made from
+    that small surplus.
+
+[3.0 minutes] At 3.0 minutes, nucleosynthesis begins. Deuterium nuclei, which
+    formed and fell apart repeatedly in the earlier heat, now survive long
+    enough to fuse into heavier elements. Over the next twenty minutes,
+    roughly 25% of the universe's ordinary matter burns into helium, leaving
+    75% as hydrogen. Trace amounts remain: 1.84e-5 deuterium nuclei per
+    hydrogen nucleus, and 7.58e-10 lithium-7 nuclei per hydrogen. Then
+    expansion carries the density below the threshold for fusion, and the
+    process halts. The periodic table holds three entries. For every 10
+    billion photons, there are 7.48 baryons.
+
+[51 kyr] At 51 thousand years, the energy density of radiation, which has
+    dominated since the beginning, falls below that of matter. Until now,
+    radiation pressure has resisted the collapse of any overdense region,
+    smoothing structure before it could grow. The balance tips. Matter takes
+    control, and gravity is free to amplify the small differences in density
+    that inflation left behind. The redshift is 3405.
+
+[365 kyr] At 365 thousand years, the universe cools through three thousand
+    kelvin. Electrons, which have been moving too fast to remain bound, slow
+    enough for nuclei to capture them. Over the span of a few tens of
+    thousands of years, ionized plasma becomes neutral gas. Light, which until
+    now has scattered off free electrons every short distance, finds the
+    universe suddenly transparent. Photons stream outward in every direction
+    without interruption. The expansion rate today is 60.2 kilometers per
+    second per megaparsec. That light has been traveling ever since and will
+    be the oldest signal any observer can detect.
+
+[510 kyr] Beyond five hundred and ten thousand years, the cooling makes vision
+    impossible. Recombination's glow shifts past red into wavelengths no eye
+    could use, and what remains offers nothing to see: hydrogen and helium
+    adrift in darkness, no fusion yet, no luminous object of any kind. Gravity
+    continues pulling on the irregularities seeded earlier, but the forces act
+    slowly and leave no trace a passing witness could detect. This emptiness
+    persists for a hundred million years—the longest span of quiet the cosmos
+    will know.
+
+[175.9 Myr] At one hundred seventy-five point nine million years, the first
+    collapse completes. Clouds containing around one million solar masses,
+    gathered at sites where the initial irregularities ran deepest, compress
+    to the point where self-gravity can hold them intact. Molecular hydrogen,
+    the sole chemical capable of shedding heat in a universe still bare of
+    metals, allows these concentrations to cool and contract further. The
+    redshift stands at twenty. Something has given way.
+
+II. First Light, and the Making of Everything Else
+--------------------------------------------------
+
+[175.9 Myr] The cloud folds inward under its own weight and finds no way to
+    halt. This gas holds no carbon, no oxygen, no grains of any kind—nothing
+    to carry the warmth of infall away into space—and so it stays hot, and hot
+    gas will not shatter into smaller clumps. The whole mass descends as a
+    single object.
+It ignites. One hundred million years after the last photon faded, there is a
+star again: one hundred seventy-six solar masses of it, radiating 5621939
+times the luminosity the Sun will one day have, its surface at 64424 K, a hard
+blue-white that would pain any eye if one existed to see it. Ultraviolet
+radiation streams outward and strips the hydrogen of its bound charge for
+light years in all directions. This is first light.
+
+[176.2 Myr] The hydrogen fuel gives out after 312 thousand years—less time
+    than the cloud took to form—and the star dies as a pair-instability
+    supernova that leaves no remnant.
+What held the core up vanished when photons grew energetic enough to spawn
+electron-positron pairs. The star fell inward and then exploded in a single
+motion. Every atom forged in its interior now flies outward at ten thousand
+kilometers a second. This is the most generous act the universe permits: a
+star that retains nothing of itself.
+
+[225.9 Myr] At 225.9 Myr, the dispersed material crosses an unwritten
+    boundary. Heavy atoms now make up about 0.02 of a percent by mass, enough
+    that dust grains can form in the cooling debris, and dust transforms what
+    comes next. It radiates warmth into space, so clouds can splinter, so
+    stars can form smaller, so stars can form slower. Grains adhere to one
+    another. Solid bodies become possible. The iron-to-hydrogen ratio stands
+    at -2.14.
+All that follows descends from this.
+
+[4.876 Gyr] At 4.876 Gyr, the interstellar medium has reached approximately
+    the composition from which the Sun will form. Iron has risen to match
+    oxygen as white dwarfs from older stellar populations detonate: the
+    oxygen-to-iron ratio has dropped to 0.30 from the alpha-enhanced values of
+    the young galaxy. Phosphorus, which few processes create and all life
+    requires, is present at 1.6e-5 by mass.
+
+[12.176 Gyr] Twelve billion years of this. One billion four hundred twenty
+    million supernovae have detonated across the disk. Ninety-one percent of
+    the galaxy's original gas now sits locked in stars. One point two times
+    ten to the tenth solar masses still drifts free between them, and what
+    drifts carries one point nine percent heavy elements by mass. Iron sits
+    sixteen hundredths of a dex above the Sun's natal abundance. Oxygen runs
+    twenty-three hundredths of a dex above iron, the signature of core
+    collapse written into the gas. Rock-forming elements—silicon, magnesium,
+    the builders of worlds—stand at one point one four times what the Sun knew
+    at birth. The galaxy has grown metal-rich, patient, methodical, each
+    explosion a small correction to the mixture.
+
+III. Glouzounn — a M star born 4.25 billion years after the first light
+-----------------------------------------------------------------------
+A cloud several light years wide, its temperature low enough that hydrogen
+atoms have joined into molecular pairs, receives a disturbance — a spiral arm
+sweeps through, or a shock wave from a distant stellar death arrives, or
+turbulence alone suffices — and a region within it loses equilibrium.
+The region collapses. Even faint rotation prevents a symmetric infall: angular
+momentum dictates that the descent flatten into a disk with a dense core at
+its center. The core temperature climbs to ten million kelvin and hydrogen
+fusion begins. The star now holds 0.34 solar masses, emits 0.020 suns worth of
+light, and burns at 3313 K (3040 C). It belongs to spectral class M. Viewed
+from a safe distance, it glows a dull, subdued red. Its metallicity measures
+0.012, which is 0.88 times the Sun's value. Its radius spans 0.42 solar radii.
+It will spend 175.29 billion years fusing hydrogen in its core.
+Dust grains in the disk adhere on contact. Aggregates grow from pebbles to
+boulders to mountain-sized fragments to bodies massive enough to
+gravitationally attract what they once had to wait for. Ten million years
+after the disk's birth, the gas has dissipated and 13 worlds orbit the star.
+
+Planet b — a rocky world of 0.047 Earth masses and 0.44 Earth radii — circles
+    at 0.039 AU and takes 5 days to complete one orbit. Its surface gravity is
+    0.25 g. The equilibrium temperature is 530 K (256 C), but the actual
+    surface reaches 542 K (269 C). The atmosphere presses down at 60.003 bar.
+    No water oceans exist. Iron makes up 29% of its mass. The world has no
+    plate tectonics and no magnetic field. Its axis tilts 26 degrees and a
+    full day lasts 116.3 hours. One moon orbits it.
+Tidal forces have locked the planet's rotation to its orbit. One face remains
+fixed toward the star while the opposite side lies in perpetual darkness. All
+activity occurs in the narrow band of twilight separating the two.
+
+Planet c — a rocky world of 0.046 Earth masses and 0.44 Earth radii — circles
+    at 0.062 AU and takes 10 days to complete one orbit. Its surface gravity
+    is 0.24 g. The equilibrium temperature is 423 K (149 C), but the actual
+    surface reaches 431 K (158 C). The atmosphere presses down at 60.001 bar.
+    No water oceans exist. Iron makes up 31% of its mass. The world has no
+    plate tectonics and no magnetic field. Its axis tilts 19 degrees and a
+    full day lasts 229.0 hours. Two moons orbit it, one of them large, torn
+    free by an ancient impact.
+Tidal forces have locked the planet's rotation to its orbit. One face remains
+fixed toward the star while the opposite side lies in perpetual darkness. All
+activity occurs in the narrow band of twilight separating the two.
+
+Planet d orbits at 0.099 AU and completes a year in 19 days. Its mass is 0.069
+    Earths and its diameter spans 0.49 Earth radii. The world is rocky with
+    iron accounting for 32% of its mass. Its thin air weighs 0.009 bar at the
+    ground where the pull is 0.29 g. The equilibrium value for its outer skin
+    is 60.7 C and the actual number is 61.2 C. No water oceans exist on its
+    face. The axis tilts 1 degree from the perpendicular to its orbit. One
+    rotation takes 464.3 hours. A single moon accompanies it.
+The world is locked with one face always turned toward Glouzounn and the other
+held away. A band girds the globe where the sun neither sets nor rises but
+hangs fixed at the horizon. All weather, all flows of heat and air, all
+chemistry that the conditions permit, occur within this zone of eternal
+half-light.
+
+Planet e moves at 0.157 AU and finishes its circuit in 39 days. Its mass is
+    0.10 Earths and it stretches 0.54 Earth radii wide. Like its inner
+    neighbor it is rocky with an iron fraction of 32%. The air above its
+    surface holds at 0.005 bar and the pull there is 0.35 g. Its equilibrium
+    value is -8.2 C while the actual reading is -7.1 C. Water equal to 0.07
+    Earth oceans lies frozen or locked in rock. The axis leans 24 degrees. A
+    day lasts 929.0 hours. Two moons orbit the planet. The larger of them is a
+    remnant torn free when another body struck the world long ago.
+This world too is locked to its star. One side knows only Glouzounn's dim red
+glow while the other has never been warmed by it. The narrow belt between them
+is the only place where light slants in at a fixed angle, neither climbing nor
+falling, and where any process that needs both warmth and cold can proceed.
+
+Planet f lies at 0.257 AU and takes 81 days to return to the same point in its
+    path. It holds 0.090 Earths of mass and spans 0.52 Earth radii. Rock
+    dominates its structure with iron at 34%. The air weighs 0.002 bar and the
+    surface pull is 0.33 g. The equilibrium value stands at -66.2 C but the
+    actual number falls to -90.5 C. Ice and subsurface reservoirs hold water
+    equal to 0.06 Earth oceans. The axis inclines 20 degrees from vertical.
+    Each rotation consumes 1951.5 hours.
+Tidal forces have halted its spin relative to Glouzounn. One hemisphere gazes
+outward at the star without interruption. The other has never turned that way.
+Between them a strip of land and ice receives light at a constant angle,
+neither more nor less as the years pass, and in that strip alone does the
+balance between extremes allow for change.
+
+Planet g follows an orbit at 0.432 AU and completes it in 177 days. Its mass
+    is 1.83 Earths and its width is 1.18 Earth radii. The core and mantle hold
+    iron at 29% by mass. The air bears down at 8.367 bar and the surface pull
+    is 1.32 g. The equilibrium value is -113.5 C but the actual reading is
+    14.5 C. Water equal to 913.42 Earth oceans covers and saturates the world.
+    The crust breaks and shifts in plates. A dynamo in the interior generates
+    a field that threads through the rock and out into space. The axis leans
+    22 degrees. One rotation takes 4249.6 hours. A single large moon, ripped
+    out when another body collided with the planet in the past, now orbits it.
+One side continuously beholds the star while the other knows only starlight
+and the faint glow of more distant suns. The planet's spin stopped long ago,
+locked by tidal forces into synchrony with its year. Between the sunward face
+and the far side lies a band where the star hangs fixed at the edge of the
+sky, neither rising nor setting, casting long shadows that never move.
+
+Planet h, an ice-rock world 6.06 times Earth's mass and 2.28 Earth radii
+    across, orbits at 0.835 AU and takes 477 days to complete one revolution.
+    Its surface bears 1.17 g, and though the equilibrium temperature stands at
+    -173.4 C, the 1.908 bar atmosphere warms the surface to -126.1 C. Beneath
+    the frozen crust lie 3028.85 Earth oceans worth of water. Iron constitutes
+    30% of its bulk. No crustal movement reshapes the surface, no dynamo stirs
+    within. The axis tilts 40 degrees, and one rotation takes 11440.2 hours.
+The rotation ceased when tidal forces locked it to its orbital period. Now one
+face keeps the star always overhead while the opposite face turns away into
+unbroken night. All thermal and chemical exchange plays out in the terminator
+zone, that narrow latitude where the star sits low and unmoving against the
+black.
+
+Planet i, an ice-rock world 4.90 times Earth's mass and 2.15 Earth radii
+    across, orbits at 1.633 AU and completes one year in 3.6 Earth years.
+    Surface pull is 1.06 g. Equilibrium temperature is -201.8 C, but a 2.968
+    bar atmosphere holds enough warmth to raise the surface to -139.7 C. Water
+    stores equal 2451.26 Earth oceans. Iron makes up 43% of the body. A dynamo
+    operates within, producing a field, though no crustal plates shift. The
+    axis leans 7 degrees from the orbital plane, and each rotation lasts 28.3
+    hours. Two moons orbit this world.
+
+Planet j, an ice-rock world 5.38 times Earth's mass and 2.21 Earth radii
+    across, orbits at 2.231 AU with a year of 5.7 Earth years. It pulls at
+    1.11 g. Equilibrium temperature is -212.1 C, and a 0.962 bar atmosphere
+    brings the surface to -183.5 C. Beneath the ice rest 2690.07 Earth oceans
+    of water. Iron accounts for 42% of its composition. A field emerges from
+    the core, but the crust is a single unbroken shell. The axis tilts 9
+    degrees, and the world turns once every 5.8 hours. One moon accompanies
+    it.
+
+Planet k, an ice-rock world 9.01 times Earth's mass and 2.53 Earth radii
+    across, orbits at 4.084 AU and takes 14.1 Earth years per revolution.
+    Surface pull is 1.40 g. Equilibrium temperature is -228.0 C, but the 2.800
+    bar atmosphere raises the surface to -168.0 C. Water totaling 4506.53
+    Earth oceans lies beneath. Iron comprises 40% of the planet. No field
+    exists, no crust breaks and shifts. The axis tilts 44 degrees, and one
+    spin takes 25.2 hours.
+
+Planet l, an ice-rock world 16.77 times Earth's mass and 3.00 Earth radii
+    across, orbits at 8.850 AU with a year of 45.0 Earth years. It pulls at
+    1.87 g. Equilibrium temperature is -242.5 C, but the dense 33.455 bar
+    atmosphere traps enough heat to bring the surface to -77.5 C. The planet
+    holds 8382.53 Earth oceans of water. Iron forms 27% of its total mass. A
+    field runs through it, generated in the core, though the outer shell does
+    not break into moving sections. The axis tilts 4 degrees, and the world
+    spins once every 6.0 hours.
+
+Planet m circles its star at 13.024 AU, taking 80.4 years to complete one
+    orbit. The world measures 9.45 Earth radii across and holds 0.30 times the
+    mass of Jupiter. Its pull at the cloud tops reaches 1.07 g. Out here, far
+    from Glouzounn's faint light, the world's outer layers radiate away heat
+    until they settle at -244.6 C. Forty-one moons travel with it.
+
+Planet n lies at 17.540 AU, where it takes 125.6 years to return to the same
+    point in its path around the star. This ice giant spans 4.37 Earth radii
+    and packs 34.81 Earth masses into that volume, creating a pull of 1.83 g
+    at its surface. The world keeps company with two moons, one of them
+    large—a piece of the planet itself, ripped free when something massive
+    struck long ago. The upper atmosphere holds a chill of -248.6 C.
+
+One world in this system deserves attention. Planet g carries 1.83 Earth
+masses and pulls at 1.32 g. Its surface holds 913.42 Earth oceans of water and
+sits at 14.5 C. The habitability score stands at 7.712. No name has been given
+to it yet, because nothing living there has learned to make words.
+
+IV. Planet g, and What Happened On It
+-------------------------------------
+The oceans hold heat and the air above them is carbon dioxide mixed with
+nitrogen, no free oxygen present. Ultraviolet light passes through without
+obstruction and strikes the water. Where ocean meets hot rock at depth,
+minerals form barriers across which protons gather on one side and not the
+other. The difference in concentration stores energy. Molecules that capture
+this energy can drive reactions that other molecules cannot.
+
+[872.0 Myr] At 872.0 Myr, something makes a copy of itself. The copy fails to
+    match the original in roughly one case out of ten, but the errors matter
+    because a variant can be tested against its parent. The first such lineage
+    is named Seikrok here, to give it a label. It is a single cell carrying 7
+    genes, it draws energy from the proton differences at the vents, and
+    exposure to oxygen would destroy it immediately if any were present.
+From this moment, no further explanation is required. All that comes after is
+this same event, repeated, in different circumstances.
+
+[1.227 Gyr] At 1.227 Gyr, something strikes the surface. The object is 6
+    kilometres across, made of stone and iron, and it delivers in roughly four
+    seconds more energy than the planet's entire interior releases in a
+    century. The impact boils the shallow sea it strikes and steam lifts salt
+    into the high air, though no organism yet harvests light.
+Half of the lineages living the year before are gone. What remains is small,
+unspecialized, and able to wait. It inherits a world emptied of competitors.
+Within twenty million years the survivors have filled every role the extinct
+once occupied, and they bear no resemblance to what they replaced.
+
+[1.645 Gyr] At 1.645 Gyr, a lineage stops depending on rock to supply its
+    energy and begins taking it directly from sunlight. The method is
+    inefficient and does not yet break apart water, but the supply is
+    effectively limitless and it falls on every surface at once rather than
+    only at the vents. Life spreads away from the sea floor.
+
+[1.774 Gyr] At 1.774 Gyr, something learns to split water. Water is abundant
+    and it provides electrons far more readily than anything available before,
+    and the lineage that achieves this spreads across the ocean. There is a
+    byproduct. Oxygen reacts violently with nearly everything and no living
+    thing can tolerate it, and for now it binds immediately to iron dissolved
+    in the sea, which oxidizes and settles. The ocean floor acquires red
+    stripes. The air remains unchanged.
+
+[2.792 Gyr] The rust is exhausted. With no more iron to bind it, oxygen enters
+    the atmosphere and persists there, lifting its proportion to 2.5% and
+    continuing upward. For nearly all life on the planet, this marks the onset
+    of a catastrophe without precedent. The vast majority of organisms are
+    anaerobic, and oxygen disassembles their molecular machinery. The methane
+    that has stabilized the planet's warmth is stripped from the sky by
+    oxidation, and the mean temperature begins to drop.
+For the few lineages that endure the transition, the same event opens a new
+thermodynamic frontier. Respiration using oxygen yields sixteen times the
+energy of fermentation for the same quantity of food. Every energetically
+costly activity that will later emerge—rapid locomotion, large body size,
+cognition—depends on this enlarged power budget, which did not exist before
+life manufactured it as a toxin.
+
+[2.795 Gyr] Oxygen accumulation advances until a zone of ozone assembles in
+    the upper atmosphere, cutting ground-level ultraviolet to 26% of its prior
+    intensity. The land surface, which has been bare rock and dust through
+    every prior epoch, ceases to be lethal. Within several million years,
+    something is growing there.
+The sequence that enabled this deserves notice. An organism had to evolve the
+ability to harvest photons. It had to develop a mechanism for splitting water,
+poisoning the biosphere in the process. The toxin had to build up over a
+billion years until it formed a high-altitude screen. Only after that could
+anything colonize the continents. The land was made accessible by a metabolic
+waste.
+
+[3.122 Gyr] Cells cease to separate after division. Initially the structure is
+    merely an aggregate, and such an aggregate is more resistant to predation
+    than a solitary cell, which suffices as an advantage. Then cells in the
+    interior encounter conditions distinct from those at the periphery, and
+    begin to specialize, and once specialization occurs there is a body.
+
+[3.124 Gyr] Popeotrix begins consuming other living things rather than
+    synthesizing its own sustenance. This alters the selection pressures on
+    every organism at once. Large size becomes a defense. Speed becomes a
+    defense. Armor, camouflage, toxicity, and the ability to detect
+    approaching threats—none held adaptive value in the previous epoch, and
+    all become critical now. The diversification that follows is not gradual.
+    It explodes.
+
+[3.342 Gyr] A cell engulfs another cell and fails to digest it. The engulfed
+    cell is efficient at oxygen respiration; the host is large and
+    metabolically slow. Both persist. They replicate together, and continue
+    replicating together, until it is no longer meaningful to describe them as
+    separate entities. The lineage is named Brubryuglauph, and its genome
+    contains 32 genes, exceeding the genetic load of any prior organism on the
+    planet. It is a cell with an internal power plant, and it can now sustain
+    a volume one hundred times that of its forebears.
+
+[3.356 Gyr] In some bodies, certain cells take on the work of relaying
+    signals. The bodies that possess them can react to their surroundings more
+    quickly than those surroundings shift. Where these cells gather, they form
+    a thickened network at whichever end tends to move forward first.
+
+[3.998 Gyr] The ice sheets cross the latitude where albedo feedback sustains
+    itself without further cooling. After that threshold, the whole ocean
+    freezes over. Below the ice, in darkness, only what lives near the
+    hydrothermal vents endures. Everything that makes it through does so
+    there.
+31% of the lineages alive the year before are gone. What remains is small,
+patient and unspecialized, and it inherits an empty world. Within twenty
+million years the survivors have spread into every job the dead used to do,
+and they look nothing like what they replaced.
+
+[4.408 Gyr] A province of the mantle rises and a million cubic kilometers of
+    basalt emerges over half a million years, along with enough sulfur to
+    acidify the oceans and enough carbon dioxide to cook them afterward.
+    Nothing arrives from space. The planet does this to itself.
+28% of the lineages alive the year before are gone. What remains is small,
+patient and unspecialized, and it inherits an empty world. Within twenty
+million years the survivors have spread into every job the dead used to do,
+and they look nothing like what they replaced.
+
+[4.953 Gyr] A second freeze, and this one closes the last open water.
+    Weathering stops, because weathering needs rain and there is no longer any
+    rain, so the carbon dioxide the volcanoes emit has nowhere to go and
+    simply piles up in the air. It will take tens of millions of years, and
+    then the thaw will be violent.
+37% of the lineages alive the year before are gone. What remains is small,
+patient and unspecialized, and it inherits an empty world. Within twenty
+million years the survivors have spread into every job the dead used to do,
+and they look nothing like what they replaced.
+
+[5.747 Gyr] The second ice locks every last stretch of open sea. Rain ceases,
+    and with it the chemical breakdown of rock that pulls carbon from air and
+    locks it in stone. The gas that rises from volcanic vents gathers in the
+    sky with nothing to scrub it away. The concentration climbs for tens of
+    millions of years. When the trapped heat finally breaks the ice, the shift
+    will come hard.
+Twenty-seven percent of the living branches vanish in a year. What persists is
+small, generalist, slow to act. These inheritors find themselves alone in a
+world swept clean of competitors. Twenty million years pass. In that span the
+remnant stock radiates into every role the extinct once filled. The
+descendants bear no resemblance to their ancestors.
+
+[6.312 Gyr] Ice crosses into the tropics at 6.312 gigayears. Pale surfaces
+    throw back incoming light, dropping temperatures and spreading more pale
+    surface in turn. The loop drives itself to the equator. Ocean water
+    solidifies to a depth of one kilometer. Beneath the frozen lid, vents keep
+    issuing gas, molecule by molecule reconstructing an atmosphere the surface
+    cannot yet feel.
+Thirty percent of living branches disappear within a single orbit. The forms
+that endure are modest in size, broad in capability, unhurried in their
+habits. They inherit vacancy. Over the next twenty million years these few
+roots send out shoots into every niche left empty by the vanished. By the end
+of that interval, the new forms occupy the same roles but answer to different
+anatomies entirely.
+
+V. The End of the Main Sequence
+-------------------------------
+
+[6.872 Gyr] At 6.872 gigayears the simulation stops. The star continues to
+    fuse hydrogen in its core. The planet continues its rotation. This is not
+    the death of the main sequence but the limit of what has been calculated.
+    To follow the system past this point requires a new invocation with
+    persistence enabled, one that will carry the model to stellar exhaustion.
+
+The biosphere at this stopping point contains 244 distinct lineages. Any
+selection would be partial. Choosing only the most massive or most widespread
+would display the same adaptive strategy six times over. What follows is a
+sampling across the range of what now lives.
+
+Rousur makes up a quarter of all living mass. It holds 52 genes. It first
+appeared when the star was 5.047 gigayears old. Its abundance reflects a
+strategy that has proven durable across more than a gigayear of planetary
+time.
+It is large, comparable to a dog in mass. It moves with speed through the
+water. It hunts other organisms. Its respiration uses oxygen but does so
+without much efficiency, a constraint imposed by the low temperatures in which
+it operates. It has begun to develop structures that transmit electrochemical
+impulses, early forms of what might be called nerves.
+
+Brewauzaest represents one tenth of one percent of the biosphere. It carries
+59 genes. It arose at 6.782 gigayears, making it among the most recent of the
+major forms. Its size exceeds that of all other lineages now alive.
+It is large, comparable to a dog in mass. It moves with speed through the
+water. It hunts other organisms. Its respiration uses oxygen but does so
+without much efficiency, a constraint imposed by the low temperatures in which
+it operates. It has begun to develop structures that transmit electrochemical
+impulses, early forms of what might be called nerves.
+
+Kriaveheil accounts for twelve hundredths of a percent of all living mass. It
+possesses 55 genes, the highest count recorded in the simulation. It first
+appeared at 4.498 gigayears, making it older than Rousur and far older than
+Brewauzaest.
+The animal weighs what a dog weighs and moves quickly through the water
+column. It hunts. The reactions that extract energy from oxygen proceed slowly
+in the cold, badly suited to this chemistry, but they proceed. The animal has
+early forms of what will be called nerves: cells strung along its length that
+can pass signals from one end to the other faster than diffusion allows.
+
+Leilyuyeo is the oldest lineage still living. It first arose at 3.100 Gyr. It
+now makes up essentially none of the living mass on this world. Twenty-nine
+genes separate it from the root of all other life.
+The cell is alone and quick. It draws energy from light. It also burns oxygen,
+though the chemistry works poorly in cold water and yields less than it might.
+It lives where the temperature stays low.
+
+Seventeen percent of the living mass on this world runs on light or on
+reactions pulled from rock. Essentially none lives by eating other life alone.
+Eighty-three percent does both. This is the arrangement the world has arrived
+at. Three-tenths of one percent of everything alive exists above the
+waterline.
+
+The Chronicle
+-------------
+the first instant Time begins. There is no earlier moment to refer to, no
+               countdown, no approach.
+5e-36 seconds At 5e-36 seconds, the space between things begins to stretch.
+0.000 seconds At 0.000 seconds, the temperature drops below two trillion
+               kelvin.
+3.0 minutes At 3.0 minutes, nucleosynthesis begins.
+51 kyr At 51 thousand years, the energy density of radiation, which has
+               dominated since the beginning, falls below that of matter.
+365 kyr At 365 thousand years, the universe cools through three thousand
+               kelvin.
+510 kyr Beyond five hundred and ten thousand years, the cooling makes vision
+               impossible.
+175.9 Myr At one hundred seventy-five point nine million years, the first
+               collapse completes.
+175.9 Myr The cloud folds inward under its own weight and finds no way to
+               halt.
+176.2 Myr The hydrogen fuel gives out after 312 thousand years—less time than
+               the cloud took to form—and the star dies as a pair-instability
+               supernova that leave...
+225.9 Myr At 225.9 Myr, the dispersed material crosses an unwritten boundary.
+4.876 Gyr At 4.876 Gyr, the interstellar medium has reached approximately the
+               composition from which the Sun will form.
+12.176 Gyr Twelve billion years of this.
+872.0 Myr At 872.0 Myr, something makes a copy of itself.
+1.227 Gyr At 1.227 Gyr, something strikes the surface.
+1.645 Gyr At 1.645 Gyr, a lineage stops depending on rock to supply its energy
+               and begins taking it directly from sunlight.
+1.774 Gyr At 1.774 Gyr, something learns to split water.
+2.792 Gyr The rust is exhausted. With no more iron to bind it, oxygen enters
+               the atmosphere and persists there, lifting its proportion to
+               2.5% and continuing upw...
+2.795 Gyr Oxygen accumulation advances until a zone of ozone assembles in the
+               upper atmosphere, cutting ground-level ultraviolet to 26% of
+               its prior intensity.
+3.122 Gyr Cells cease to separate after division.
+3.124 Gyr Popeotrix begins consuming other living things rather than
+               synthesizing its own sustenance.
+3.342 Gyr A cell engulfs another cell and fails to digest it.
+3.356 Gyr In some bodies, certain cells take on the work of relaying signals.
+3.998 Gyr The ice sheets cross the latitude where albedo feedback sustains
+               itself without further cooling.
+4.408 Gyr A province of the mantle rises and a million cubic kilometers of
+               basalt emerges over half a million years, along with enough
+               sulfur to acidify the ocea...
+4.953 Gyr A second freeze, and this one closes the last open water.
+5.747 Gyr The second ice locks every last stretch of open sea.
+6.312 Gyr Ice crosses into the tropics at 6.312 gigayears.
+6.872 Gyr At 6.872 gigayears the simulation stops.
+
+Animals with nervous systems. No further.
+Peak diversity: 260 coexisting lineages.
+Universe 16415847917753018577. To see it again, exactly: lifesim run --seed
+16415847917753018577

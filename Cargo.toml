@@ -1,0 +1,14 @@
+[package]
+name = "lifesim"
+version = "0.1.0"
+edition = "2021"
+description = "A seed-to-civilization universe simulator that tells you what happened, in words."
+license = "CC0-1.0"
+repository = "https://github.com/glasswings-lang/lifesim"
+readme = "README.md"
+keywords = ["simulation", "astronomy", "evolution", "procedural"]
+
+[dependencies]
+
+[profile.release]
+opt-level = 3

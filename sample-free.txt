@@ -1,0 +1,419 @@
+Universe 16415847917753018577.
+
+Everything below was computed, not chosen. Nothing here is written down in
+advance.
+
+Narrated by minimax/minimax-m3:free, through OpenRouter. The physics is fixed
+by the seed and is identical every time; the telling is not, so this run will
+read differently from the last one even where the same things happen.
+
+I. The First Three Minutes, and the Long Dark After
+---------------------------------------------------
+
+[the first instant] There is no before. Time begins here, at the smallest
+    interval that carries any meaning, and everything that will ever exist is
+    packed into a region smaller than a proton, at a temperature hotter than
+    any number that will later find a use.
+
+[5e-36 seconds] Space stretches. Not the objects within it, but the distance
+    between them, doubling and doubling again, faster than light is permitted
+    to cross the gap, because the rule about light does not govern the stage
+    on which it travels. In the time it takes for nothing at all to happen,
+    the universe grows by a factor larger than the number of atoms it will
+    ever contain.
+Inflation ends. Whatever drove the expansion decays into a bath of particles,
+and the universe refills with heat at the cost of its own strangeness. But the
+process leaves fingerprints behind. The quantum jitter that existed when the
+universe was small has been stretched to the size of the sky. Every galaxy
+that will ever form is already sketched here, as a whisper of density 0.822
+above the average, where our own measurements find 0.811.
+
+[0.000 seconds] Quarks lose their freedom. Below two trillion kelvin they can
+    no longer fly apart, and the plasma condenses into protons and neutrons
+    the way steam condenses into rain. Matter and antimatter annihilate almost
+    perfectly. Almost. For every billion pairs that cancel, one particle of
+    matter is left standing, for reasons nobody has ever fully explained.
+    Everything that is ever built gets built out of that remainder.
+
+[3.0 minutes] Nucleosynthesis begins. Deuterium finally survives long enough
+    to be built upon, and over about twenty minutes the universe fuses a
+    fraction of its ordinary matter into helium, leaving hydrogen at 75% of
+    the total. The deuterium-to-hydrogen ratio settles at 1.84e-5, lithium-7
+    to hydrogen at 7.58e-10, with 7.48 baryons for every 10 billion photons.
+    Then space expands past the density where fusion can continue and the
+    process stops, permanently, with the periodic table three entries long.
+
+[51 kyr] For fifty thousand years radiation has outweighed matter, and its
+    pressure has smoothed flat every clump that tried to form. Now the balance
+    tips. Matter wins, and for the first time gravity is allowed to keep what
+    it gathers, at redshift 3405.
+
+[365 kyr] The universe cools through three thousand kelvin and electrons, for
+    the first time, are moving slowly enough to be caught. Every nucleus takes
+    one. Within a few tens of thousands of years the fog of loose charge
+    becomes clear neutral gas, and light, which has spent its entire existence
+    being knocked sideways after a few steps, suddenly finds the road open in
+    every direction at once. That light is still travelling, against an
+    expansion that today proceeds at 60.2 km/s/Mpc. It is the oldest thing
+    anyone will ever see.
+
+[510 kyr] And then, nothing to see. The light of recombination reddens out of
+    the visible and the universe goes dark: no stars, no galaxies, only cold
+    hydrogen and helium drifting, and the slow, patient, invisible work of
+    gravity pulling on ripples too faint to notice. This goes on for a hundred
+    million years. It is the longest quiet the universe will ever have.
+
+[175.9 Myr] Something gives. The first ripples finish their fall. At 175.9
+    million years, clouds of around a million solar masses reach the density
+    where they can hold themselves together, and molecular hydrogen, the only
+    coolant this chemistry-poor universe possesses, lets them shed heat and
+    keep shrinking.
+
+II. First Light, and the Making of Everything Else
+--------------------------------------------------
+
+[175.9 Myr] The cloud falls in on itself and cannot stop. There is no carbon
+    here, no oxygen, no dust: nothing that can radiate away the heat of
+    collapse efficiently, so the gas stays warm, and warm gas will not break
+    into small pieces. It comes down in one enormous body.
+It ignites. After a hundred million years of absolute darkness there is a
+star: 176 solar masses of it, burning 5621939 times brighter than the Sun
+will, at 64424 K, a hard blue-white, painful to look at — a colour no eye
+exists yet to be hurt by. The ultraviolet pours out and strips electrons off
+the hydrogen for light years in every direction. First light.
+
+[176.2 Myr] It runs out of hydrogen in 312 thousand years — less time than it
+    took to form the cloud it was born in — and ends as a pair-instability
+    supernova that leaves nothing at all behind.
+Nothing survives it. The core got hot enough that photons began turning into
+electron-positron pairs, the pressure holding the star up went with them, and
+the whole thing collapsed and then detonated in one stroke. Every atom it made
+is now moving outward at ten thousand kilometres a second. This is the single
+most generous thing that ever happens in a universe: a star that keeps
+nothing.
+
+[225.9 Myr] The gas crosses a threshold nobody set. There are now enough heavy
+    atoms — about 0.02 of a percent by mass — that dust grains can condense in
+    cooling ejecta, and dust changes everything: it radiates heat away, so
+    clouds can fragment, so stars can be born small, so stars can be born
+    *slow*. And grains stick to grains. Rocks are possible now. [Fe/H] is
+    -2.14.
+Everything after this is downstream of that.
+
+[4.876 Gyr] The gas reaches roughly the chemistry the Sun was born with. Iron
+    has caught up with oxygen as the white dwarfs of earlier generations begin
+    detonating: [O/Fe] has fallen to 0.30 from the alpha-rich values of the
+    early galaxy. Phosphorus, which almost nothing makes and everything alive
+    needs, is present at 1.6e-5 by mass.
+
+[12.176 Gyr] Twelve billion years of this. 1.42 billion supernovae have gone
+    off. 91% of the galaxy's original gas is locked into stars, 1.20e10 solar
+    masses still drifts free, and what drifts is 1.9% heavy elements by mass —
+    1.33 times the enrichment the Sun was born into.
+
+III. Glouzounn — a M star born 4.25 billion years after the first light
+-----------------------------------------------------------------------
+A cloud a few light years across, cold enough that its hydrogen has paired
+into molecules, gets nudged by a passing spiral arm, by the shockwave of a
+nearby supernova, by nothing much at all, and part of it loses the ability to
+hold itself up against its own weight.
+It falls. Because it was turning, even slightly, it cannot fall straight:
+angular momentum has to go somewhere, so the fall flattens into a disk with a
+swelling knot at the centre. The knot climbs to ten million kelvin and
+hydrogen starts fusing into helium. That is a star, and this one carries 0.34
+solar masses, gives off 0.020 solar luminosities, and burns at 3313 K, which
+is 3040 C. It is an M-type star, expected to linger 175.29 billion years on
+the main sequence, with a metallicity of 0.012, about 0.88 times solar, and a
+radius of 0.42 solar radii. From far enough away to survive looking, it reads
+as a deep, dim red.
+In the leftover disk, dust grains stick where they touch. Pebbles turn into
+boulders, boulders into mountains, mountains into bodies with their own pull,
+and once a body has its own pull it stops waiting for collisions to find it
+and starts gathering them in. Ten million years later the gas is gone and 13
+worlds remain.
+
+Planet b — rocky, 0.047 Earths, 0.44 Earth radii across, orbiting at 0.039 AU
+    with a year of 5 days.
+It is tidally locked. One hemisphere faces its star without end and the other
+has never seen it. Everything that occurs here occurs in the ring of permanent
+dawn running between them.
+
+Planet c — rocky, 0.046 Earths, 0.44 Earth radii across, orbiting at 0.062 AU
+    with a year of 10 days.
+It is tidally locked. One hemisphere stares at its star without relief and the
+other has never known its light. Whatever takes place here takes place in the
+thin band of perpetual twilight that runs between them.
+
+Planet d — rocky, 0.069 Earths, 0.49 Earth radii across, orbiting at 0.099 AU
+    with a year of 19 days.
+It is tidally locked. One face is turned toward its star for all time, the
+other has never felt that warmth. All that unfolds here unfolds in the strip
+of unending dusk that rings the boundary between them.
+
+Planet e — rocky, 0.10 Earths, 0.54 Earth radii across, orbiting at 0.157 AU
+    with a year of 39 days.
+It is tidally locked. One side of the world looks forever at its star, the
+other has never been touched by that glow. Anything that happens anywhere here
+happens within the band of ceaseless half-light that circles the seam between
+the two.
+
+Planet f — rocky, 0.090 Earths, 0.52 Earth radii across, orbiting at 0.257 AU
+    with a year of 81 days.
+It is tidally locked. One half of the planet is held eternally facing its
+star, the other half has never once been shown it. All the activity of the
+place is confined to the ribbon of permanent dusk that traces the meeting line
+between them.
+
+Planet g — rocky, 1.83 Earths, 1.18 Earth radii across, orbiting at 0.432 AU
+    with a year of 177 days.
+It is tidally locked. One side of the world confronts its star for every
+moment of its existence, while the opposite side has never been illuminated by
+it. Nothing of consequence here occurs outside the band of everlasting
+twilight that girdles the divide.
+
+Planet h — an ice-rock world, 6.06 Earths, 2.28 Earth radii across, orbiting
+    at 0.835 AU with a year of 477 days.
+It is tidally locked. One hemisphere is fixed upon its star for the full span
+of the world's life, and the far hemisphere has never once been lit by it.
+Whatever this place is or does, it does within the narrow zone of perpetual
+half-light that traces the border between the two.
+
+Planet i — an ice-rock world, 4.90 Earths, 2.15 Earth radii across, orbiting
+    at 1.633 AU with a year of 3.6 years.
+
+Planet j — an ice-rock world, 5.38 Earths, 2.21 Earth radii across, orbiting
+    at 2.231 AU with a year of 5.7 years.
+
+Planet k — an ice-rock world, 9.01 Earths, 2.53 Earth radii across, orbiting
+    at 4.084 AU with a year of 14.1 years.
+
+Planet l — an ice-rock world, 16.77 Earths, 3.00 Earth radii across, orbiting
+    at 8.850 AU with a year of 45.0 years.
+
+Planet m — a gas giant, 0.30 Jupiters, 9.45 Earth radii across, orbiting at
+    13.024 AU with a year of 80.4 years.
+
+Planet n — an ice giant, 34.81 Earths, 4.37 Earth radii across, orbiting at
+    17.540 AU with a year of 125.6 years.
+
+Of these, one is worth watching. Planet g carries 1.83 Earth masses and pulls
+with 1.32 g at its surface, where 913.42 Earth oceans of water lap against
+terrain resting at a mean 14.5 C. It has no name yet because nothing on it can
+name things.
+
+IV. Planet g, and What Happened On It
+-------------------------------------
+The oceans are warm and the sky is carbon dioxide and nitrogen with no free
+oxygen in it at all. Short-wavelength light from the parent star reaches the
+surface unimpeded. At the sea floor, where water meets hot rock, there are
+steep chemical gradients — protons on one side of a mineral membrane and not
+the other — and a gradient is a battery. Molecules that happen to catch that
+energy get to do more chemistry than molecules that do not.
+
+[872.0 Myr] Something copies itself. Not well — the copy is wrong perhaps one
+    time in ten — but wrongness is the point, because a copy that is slightly
+    different is a thing that can be selected. The first lineage is called
+    Seikrok here, for the sake of having something to call it. It is a single
+    cell with 7 genes, it eats the gradient at the vents, and oxygen would
+    kill it instantly if any existed.
+From this point nothing needs to be explained again. Everything that follows
+is this, repeated, under changing conditions.
+
+[1.227 Gyr] An impact. 6 kilometres of stone and iron, delivering in about
+    four seconds more energy than the planet's whole interior gives off in a
+    century. The shock boils the shallow sea it lands in and the steam carries
+    salt into the stratosphere, though nothing here yet lives on light.
+50% of the lineages alive the year before are gone. What is left is small,
+patient and unspecialised, and it inherits an empty world. Within twenty
+million years the survivors have spread into every job the dead used to do,
+and they look nothing like what they replaced.
+
+[1.645 Gyr] A lineage stops waiting for the rock to feed it and starts taking
+    energy directly out of sunlight. It is not efficient and it does not yet
+    split water, but the supply is effectively infinite and it falls on
+    everywhere at once instead of only on the vents. Life leaves the sea
+    floor.
+
+[1.774 Gyr] Something works out how to split water. Water is everywhere and it
+    is a far better source of electrons than anything that came before, and
+    the lineage that manages it inherits the ocean. There is a waste product.
+    Oxygen is violently reactive and nothing alive can handle it, and for now
+    it all goes straight into the iron dissolved in the sea, which rusts and
+    sinks. The ocean floor turns red in bands. The air does not change at all.
+
+[2.792 Gyr] The rust runs out. With nothing left to absorb it, oxygen goes
+    into the air and stays there, and the air is now 2.5% oxygen and climbing.
+    This is the worst thing that has ever happened to life on this planet.
+    Almost everything alive is anaerobic and oxygen tears its chemistry apart.
+    The methane that has been keeping the world warm is oxidised out of the
+    sky, and the temperature falls.
+And it is also the best thing that has ever happened, for the small number of
+lineages that survive it. Burning food with oxygen releases roughly sixteen
+times more energy than fermenting it. Everything expensive that life will ever
+do — moving fast, growing large, thinking — is affordable only on this budget,
+and the budget did not exist until life itself created it as a poison.
+
+[2.795 Gyr] Enough oxygen has accumulated that a layer of ozone forms high in
+    the atmosphere, and short-wavelength light at the ground drops to 26% of
+    what it was. The land, which has been sterile rock and dust for the entire
+    history of this world, stops being lethal. Within a few million years
+    there is something growing on it.
+Something had to learn to eat light. It had to learn to split water, and taint
+the whole world doing it. The taint had to build up for a billion years until
+it reached the upper atmosphere and became a shield. Only then could anything
+crawl out onto the land. The continents were opened by a waste product.
+
+[3.122 Gyr] Cells stop separating after they divide. At first it is only a
+    clump, and the clump is harder to swallow than a single cell is, which is
+    reason enough. Then cells in the middle find themselves in a different
+    situation from cells on the outside, and start doing different things, and
+    once that happens there is a body.
+
+[3.124 Gyr] Popeotrix begins eating other living things instead of making its
+    own food. This alters the rules for everything at once. Being large is now
+    a defence. Being fast is now a defence. Being armoured, being hidden,
+    being poisonous, being able to see what is coming: none of these were
+    worth anything last epoch and all of them are worth everything now.
+    Diversity does not increase gradually after this. It detonates.
+
+[3.342 Gyr] A cell swallows another cell and does not digest it. The swallowed
+    one is good at oxygen; the swallower is large and slow. Neither dies. They
+    divide together, and keep dividing together, until there is no longer a
+    sensible way to say there are two of them. The lineage is called
+    Brubryuglauph and its genome has 32 genes, which is more than anything on
+    this planet has ever carried. It is a cell with a power plant inside it,
+    and it can now afford to be a hundred times bigger than its ancestors.
+
+[3.356 Gyr] Some cells in some bodies specialise in carrying signals, and the
+    bodies that have them can respond to the world faster than the world
+    shifts. A net of them thickens at the end that usually goes first.
+
+[3.998 Gyr] The ice sheets pass the latitude where the albedo feedback becomes
+    self-sustaining, and after that no further cooling is needed. The whole
+    ocean skins over. Beneath the ice, in the dark, at the vents, everything
+    that survives this survives there.
+31% of the lineages alive the year before are gone. What is left is small,
+quiet and unspecialised, and it inherits an empty world. Within twenty million
+years the survivors have spread into every job the dead used to do, and they
+look nothing like what they replaced.
+
+[5.158 Gyr] A second freeze, and this one closes the last open water.
+    Weathering stops, because weathering needs rain and there is no longer any
+    rain, so the carbon dioxide the volcanoes emit has nowhere to go and
+    simply piles up. It will take tens of millions of years, and then the thaw
+    will be violent.
+28% of the lineages alive the year before are gone. What is left is small,
+quiet and unspecialised, and it inherits an empty world. Within twenty million
+years the survivors have spread into every job the dead used to do, and they
+look nothing like what they replaced.
+
+[6.659 Gyr] The ice sheets pass the latitude where the albedo feedback becomes
+    self-sustaining, and after that no further cooling is needed. The whole
+    ocean skins over. Beneath the ice, in the dark, at the vents, everything
+    that survives this survives there.
+Roughly a quarter of the forms alive the year before are gone, and what
+endures is small, quiet, and without specialization, taking possession of an
+emptied world. Inside twenty million years these holdovers fan outward into
+every role the vanished ones once filled, and the living surface bears no
+likeness to the one that came before.
+
+V. The End of the Main Sequence
+-------------------------------
+
+[6.872 Gyr] The simulation arrives at the boundary of what was computed. The
+    star continues fusing hydrogen and the world continues rotating on its
+    axis. Nothing has finished; the line drawn here marks where the
+    calculation stops. Running the program again with --persist would carry it
+    onward, through the remaining phases of the star.
+
+By the close of the main sequence, 260 lineages remain. A slice through them
+is more useful than a list of the largest, since the leading entries would
+repeat the same successful pattern half a dozen times.
+
+Breistinn is the most abundant, accounting for 17% of the biosphere across 55
+genes, having first appeared at 4.370 Gyr.
+A lineage of dog-sized, swift predators that use oxygen, though wastefully,
+while submerged in cold water, and that display the earliest scaffolding of
+nervous tissue.
+
+Chyulele is the largest by body size, making up 0.14% of the biosphere across
+55 genes, with a first appearance at 5.785 Gyr.
+Dog-sized, fast-moving hunters that draw on oxygen, though without great
+economy, while moving through cold water, and that carry the rudiments of a
+nervous system.
+
+Treoso is the oldest lineage still in existence, occupying 0.22% of the
+biosphere across 27 genes, having originated at 3.147 Gyr.
+Single-celled and quick, subsisting on light and using oxygen, though with
+poor efficiency, while drifting in cold water.
+
+The trophic structure, measured by share of the biosphere, looks like this:
+17% of organisms draw their energy solely from light or from rock chemistry,
+almost none sustain themselves entirely by preying on other organisms, and the
+remaining 83% combine both modes, which is the configuration this world has
+arrived at. Almost nothing that is alive spends its life out of the water.
+
+The Chronicle
+-------------
+the first instant There is no before. Time begins here, at the smallest
+               interval that carries any meaning, and everything that will
+               ever exist is packed into a region sm...
+5e-36 seconds Space stretches. Not the objects within it, but the distance
+               between them, doubling and doubling again, faster than light is
+               permitted to cross the gap...
+0.000 seconds Quarks lose their freedom.
+3.0 minutes Nucleosynthesis begins. Deuterium finally survives long enough to
+               be built upon, and over about twenty minutes the universe fuses
+               a fraction of its ord...
+51 kyr For fifty thousand years radiation has outweighed matter, and its
+               pressure has smoothed flat every clump that tried to form.
+365 kyr The universe cools through three thousand kelvin and electrons, for
+               the first time, are moving slowly enough to be caught.
+510 kyr And then, nothing to see.
+175.9 Myr Something gives. The first ripples finish their fall.
+175.9 Myr The cloud falls in on itself and cannot stop.
+176.2 Myr It runs out of hydrogen in 312 thousand years — less time than it
+               took to form the cloud it was born in — and ends as a
+               pair-instability supernova that...
+225.9 Myr The gas crosses a threshold nobody set.
+4.876 Gyr The gas reaches roughly the chemistry the Sun was born with.
+12.176 Gyr Twelve billion years of this.
+872.0 Myr Something copies itself. Not well — the copy is wrong perhaps one
+               time in ten — but wrongness is the point, because a copy that
+               is slightly different i...
+1.227 Gyr An impact. 6 kilometres of stone and iron, delivering in about four
+               seconds more energy than the planet's whole interior gives off
+               in a century.
+1.645 Gyr A lineage stops waiting for the rock to feed it and starts taking
+               energy directly out of sunlight.
+1.774 Gyr Something works out how to split water.
+2.792 Gyr The rust runs out. With nothing left to absorb it, oxygen goes into
+               the air and stays there, and the air is now 2.5% oxygen and
+               climbing.
+2.795 Gyr Enough oxygen has accumulated that a layer of ozone forms high in
+               the atmosphere, and short-wavelength light at the ground drops
+               to 26% of what it was.
+3.122 Gyr Cells stop separating after they divide.
+3.124 Gyr Popeotrix begins eating other living things instead of making its
+               own food.
+3.342 Gyr A cell swallows another cell and does not digest it.
+3.356 Gyr Some cells in some bodies specialise in carrying signals, and the
+               bodies that have them can respond to the world faster than the
+               world shifts.
+3.998 Gyr The ice sheets pass the latitude where the albedo feedback becomes
+               self-sustaining, and after that no further cooling is needed.
+5.158 Gyr A second freeze, and this one closes the last open water.
+6.659 Gyr The ice sheets pass the latitude where the albedo feedback becomes
+               self-sustaining, and after that no further cooling is needed.
+6.872 Gyr The simulation arrives at the boundary of what was computed.
+
+Animals equipped with nervous systems persist in this simulated world, their
+networked cells of specialized tissue conducting electrochemical impulses
+between sensory surfaces and effectors, coordinating perception with motion in
+creatures that range from simple invertebrates to complex vertebrates.
+At the height of diversity, two hundred and sixty distinct lineages coexisted
+on the simulated world, each one a separate thread of inherited variation
+threading its way through the biosphere.
+Universe 16415847917753018577. To reproduce this particular configuration, the
+command lifesim run --seed 16415847917753018577 will regenerate the identical
+sequence of states from the same numerical starting point.
