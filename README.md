@@ -74,7 +74,24 @@ The run pauses every time something happens. At the prompt:
 | `ocean` / `land` | what lives where |
 | `world` | the planet right now: air, temperature, water, day length |
 | `sky` | the star, its colour, its lifetime, this world's orbit |
+| `huh` | what just happened, in small words |
+| `huh oxygen` | what any word means, in small words |
 | `run` | stop asking and go to the end |
+
+`huh` deserves its own note. The rest of this program assumes you already know
+what metallicity and redshift and photosynthesis are. That is a property of the
+program, not of the reader, and it makes the whole thing useless to anyone who
+was somewhere else during science at school — which is a lot of people, usually
+for reasons that were nothing to do with them.
+
+Type `huh` and you get what just happened with nothing assumed, then one line
+on where you are: whether the air is breathable, whether it is warm, how big
+the biggest living thing is, whether anything can live on land yet. `huh <word>`
+does the same for any term the program uses.
+
+It is pitched at about five or six years old and written properly rather than
+written down to, which means it reads fine at any age. Short sentences,
+concrete things, and no word that needs another word to understand it.
 
 The point is that all of this was always being computed and then thrown away.
 Every lineage has a genome, a parent, sixteen traits, and a date it appeared.

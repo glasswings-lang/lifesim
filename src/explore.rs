@@ -33,7 +33,7 @@ pub enum Step {
     Quit,
 }
 
-pub fn prompt(bio: &Biosphere, p: &Planet, star: &Star, t: f64) -> Step {
+pub fn prompt(bio: &Biosphere, p: &Planet, star: &Star, t: f64, last: &str) -> Step {
     let stdin = io::stdin();
     loop {
         print!("\n{} > ", stamp(t * 1e6));
@@ -68,6 +68,7 @@ pub fn prompt(bio: &Biosphere, p: &Planet, star: &Star, t: f64) -> Step {
             "land" => where_(bio, true),
             "world" | "here" => world(bio, p),
             "sky" | "star" => sky(star, p),
+            "huh" | "what" | "eh" | "wat" => huh(bio, last, &arg),
             "help" | "?" => help(),
             _ => println!("I do not know \"{}\". Type help for the list.", cmd),
         }
@@ -76,6 +77,8 @@ pub fn prompt(bio: &Biosphere, p: &Planet, star: &Star, t: f64) -> Step {
 
 fn help() {
     println!("
+  huh              what just happened, in small words
+  huh oxygen       what any word means, in small words
   (enter)          let it run to the next thing that happens
   go 50            let 50 million years pass, whatever happens
   look NAME        everything known about one lineage
@@ -261,6 +264,303 @@ fn sky(star: &Star, p: &Planet) {
     println!("  distance         {:.3} AU", p.a);
     println!("  year             {:.0} days", p.period_days(star.mass));
     println!("  this world is    {}", kind_name(p.kind));
+}
+
+/// "huh" - what just happened, or what a word means, with nothing assumed.
+///
+/// Written for somebody about five or six, and written properly rather than
+/// written down to. Short sentences, concrete things, no word that needs
+/// another word to understand it. Done well this reads fine at any age, which
+/// matters here: whoever is at the keyboard should get a real answer.
+///
+/// The event lookup matches on the headline text. That is only safe because
+/// this program wrote those headlines itself, so they are known strings and
+/// not something arriving from outside.
+fn huh(bio: &Biosphere, last: &str, arg: &str) {
+    println!();
+    if !arg.is_empty() {
+        match glossary(&arg.to_lowercase()) {
+            Some(text) => println!("{}", text),
+            None => println!(
+                "I do not have a small-words answer for \"{}\" yet. Try: huh oxygen, \
+                 huh star, huh gene, huh evolution.", arg),
+        }
+        return;
+    }
+
+    let l = last.to_lowercase();
+    let says = |k: &str| l.contains(k);
+
+    let text = if says("copies itself") {
+        "Something in the water made a copy of itself.\n  \
+         That is all being alive is, to begin with: something that can make \
+         another one of itself.\n  \
+         The copy came out a bit wrong. That turns out to matter more than \
+         anything else that ever happens."
+    } else if says("energy directly out of sunlight") {
+        "Something learned to eat light.\n  \
+         Before this, living things had to eat chemicals leaking out of hot \
+         rock at the bottom of the sea, and there is only so much of that.\n  \
+         Light falls on everywhere, all day, and never runs out."
+    } else if says("split water") {
+        "Something learned to pull water apart to get at what is inside it.\n  \
+         Water is everywhere, so this works very well, and the thing that \
+         figured it out takes over the sea.\n  \
+         It leaves a gas behind. The gas is oxygen, and right now oxygen is \
+         poison to everything alive."
+    } else if says("oxygen goes into the air") || says("nothing left to absorb") {
+        "The air has changed, and this is the biggest thing that has happened \
+         so far.\n  \
+         For about a billion years all the oxygen went straight into the sea \
+         and got stuck there. Now the sea is full, so it goes up into the sky \
+         and stays.\n  \
+         Nearly everything alive is poisoned by it and dies.\n  \
+         The few that survive get something enormous: you can burn food with \
+         oxygen, and that gives about sixteen times more energy. Everything \
+         big, and everything fast, and everything that ever thinks, comes from \
+         this."
+    } else if says("ozone") {
+        "High above the ground, the oxygen has made a thin shield.\n  \
+         Before it, sunlight burned anything that came out of the water.\n  \
+         The land has been bare rock this whole time. It is not deadly any more."
+    } else if says("stop separating") {
+        "Cells started sticking together after they split, instead of drifting \
+         apart.\n  \
+         A clump is harder to eat than one cell on its own.\n  \
+         Then the cells in the middle started doing different jobs from the \
+         ones on the outside. That is a body."
+    } else if says("swallows another cell") {
+        "One cell ate another cell and did not digest it.\n  \
+         They both just kept living, and kept splitting, together, until there \
+         was no sensible way to say there were two of them.\n  \
+         The eaten one was good at using oxygen. The one that ate it was big \
+         and slow. Together they are better than either.\n  \
+         This really happened, about two billion years ago, and it is why you \
+         are made the way you are."
+    } else if says("eating other living things") {
+        "Something started eating other living things instead of making its \
+         own food.\n  \
+         Everything changes now. Being big helps. Being fast helps. Being \
+         hidden helps. Being able to see what is coming helps.\n  \
+         None of that was worth anything last week."
+    } else if says("carrying signals") {
+        "Some cells inside the body turned into wires.\n  \
+         Now the body can feel something at one end and move at the other."
+    } else if says("nervous system dense enough") {
+        "Its brain got big enough to hold a picture of things that are not in \
+         front of it.\n  \
+         It can remember somewhere it is not standing. It can guess what \
+         happens next.\n  \
+         There is something it is like to be this animal now. There was not, \
+         before."
+    } else if says("groups that persist") {
+        "They started living in groups that last longer than any one of them \
+         does.\n  \
+         So when one of them learns something, it does not die with them."
+    } else if says("picks up something") {
+        "One of them picked up something that was not part of its body, used \
+         it to do a job its body could not do, and then kept it."
+    } else if says("looks up") || says("works out what it is") {
+        "Something on this world looked up and worked out what it was looking \
+         at.\n  \
+         It worked out that the metal inside its own blood was made in a star \
+         that died before its sun existed.\n  \
+         That is not a pretty way of putting it. That is where the metal came \
+         from."
+    } else if says("kilometres across") || says("kilometres of stone") || says("impact") {
+        "A rock from space hit the world. A big one.\n  \
+         The ground it landed on turned to dust and went up into the sky, and \
+         the sky stayed dark for years.\n  \
+         When the sky is dark, nothing can eat light, and then nothing can eat \
+         the things that eat light."
+    } else if says("mantle") || says("basalt") || says("lava") || says("seafloor spreading") {
+        "The ground cracked open and hot rock came out, and kept coming out, \
+         for hundreds of thousands of years.\n  \
+         Nothing came from space. The world did this by itself.\n  \
+         It changed the air faster than anything alive could keep up with."
+    } else if says("ice") || says("freeze") || says("albedo") {
+        "The whole world froze, all the way to the middle where it is warmest.\n  \
+         White ice bounces sunlight back into space, which makes it colder, \
+         which makes more ice, which bounces more sunlight away.\n  \
+         Once it starts it does not stop by itself. Volcanoes have to breathe \
+         enough warm air back in to break it, and that takes a very long time."
+    } else if says("light years") && says("collapses") || says("second sun") {
+        "A star near this one ran out and exploded.\n  \
+         For a few weeks there were two suns in the sky.\n  \
+         Then the hard part of the light arrived and stripped the shield off \
+         the top of the air."
+    } else if says("lineages alive the year before are gone") {
+        "A lot of things just died at once.\n  \
+         The ones that live through it are usually small, and not fussy about \
+         food, and able to wait.\n  \
+         Then they spread out into all the empty space the dead ones left, and \
+         turn into something that looks nothing like what was here before. \
+         The interesting things usually happen right after the terrible things."
+    } else if says("most abundant thing alive") {
+        "The commonest living thing on the world is not the same one as it was.\n  \
+         Something else does the job better now, so there is more of it."
+    } else if says("oxygen has climbed") || says("oxygen has fallen") {
+        "The amount of oxygen in the air has changed.\n  \
+         Living things are what put it there, and other living things are what \
+         take it away, so this number is really a fight between them."
+    } else if says("lineages has risen") {
+        "There are more different kinds of living thing than there were.\n  \
+         When something new becomes possible, everything spreads out into it \
+         at once."
+    } else if says("surface has gone from") {
+        "The world got warmer or colder.\n  \
+         What decides it is mostly how much of a certain gas is in the air, \
+         and living things keep changing how much of it there is."
+    } else if says("nothing about this world changes") {
+        "Nothing happened for a very long time.\n  \
+         Most of the history of a living world is like this. It is not broken. \
+         It is just quiet."
+    } else {
+        "Something changed on this world.\n  \
+         Try \"world\" to see what it is like right now, or \"life\" to see \
+         what is living on it."
+    };
+    println!("{}", indent2(text));
+    println!();
+    println!("{}", indent2(&where_you_are(bio)));
+}
+
+fn where_you_are(bio: &Biosphere) -> String {
+    let e = &bio.env;
+    let n = bio.species.len();
+    let air = if e.o2 < 0.001 { "There is no air you could breathe." }
+        else if e.o2 < 0.05 { "There is a little bit of the air you breathe, not enough." }
+        else { "There is air you could breathe." };
+    let warm = if e.t_surf > 305.0 { "It is too hot." }
+        else if e.t_surf > 283.0 { "It is warm." }
+        else if e.t_surf > 268.0 { "It is cold." }
+        else { "It is frozen." };
+    let big = bio.species.iter().map(|s| s.tr[SIZE]).fold(0.0, f64::max);
+    let size = if big < 0.3 { "Everything alive is too small to see." }
+        else if big < 0.55 { "The biggest things alive would fit on your hand." }
+        else { "Some of the things alive are as big as a dog." };
+    let land = if e.land_open { "Things can live on the land." }
+        else { "Nothing can live on the land yet." };
+    format!("Right now: {} {} {} {} There are {} different kinds of living thing.",
+        air, warm, size, land, n)
+}
+
+fn indent2(s: &str) -> String {
+    s.lines().map(|l| format!("  {}", l.trim_start())).collect::<Vec<_>>().join("\n")
+}
+
+/// Plain meanings for the words the program uses. Same rule as above: real
+/// answers, small words, nothing that needs a second word to understand it.
+fn glossary(word: &str) -> Option<&'static str> {
+    let w = word.trim().trim_start_matches("a ").trim_start_matches("the ");
+    Some(match w {
+        "star" | "sun" | "stars" =>
+            "  A star is a ball of gas so big and so heavy that its own weight \
+             squeezes the middle until it gets hot enough to burn.\n  \
+             It burns for a very long time and then it stops. Our sun is a star.",
+        "planet" | "planets" | "world" =>
+            "  A planet is a ball of rock or gas going round and round a star.\n  \
+             It is made of the dust left over from making the star.",
+        "moon" | "moons" =>
+            "  A moon is a smaller ball going round and round a planet.\n  \
+             Ours got made when something enormous hit the Earth and knocked a \
+             piece off.",
+        "oxygen" =>
+            "  Oxygen is the part of the air you breathe that keeps you alive.\n  \
+             There was none of it at first. Living things made it, by accident, \
+             as rubbish they did not want.\n  \
+             It is also good at breaking things, which is why it poisoned \
+             almost everything the first time it appeared.",
+        "air" | "atmosphere" =>
+            "  The air is the layer of gas sitting on top of a world.\n  \
+             It keeps the heat in, like a blanket, and it stops some of the \
+             burny kind of sunlight getting to the ground.",
+        "carbon dioxide" | "co2" =>
+            "  A gas that holds heat in. The more of it in the air, the warmer \
+             the world.\n  \
+             Volcanoes put it in. Rain slowly takes it out. Living things mess \
+             with both.",
+        "gene" | "genes" =>
+            "  A gene is one instruction inside a living thing.\n  \
+             All of them together are the whole recipe for making one.",
+        "genome" =>
+            "  The whole set of instructions for making one living thing.\n  \
+             When something has a copy made of it, sometimes an instruction \
+             comes out wrong, and that is where new kinds come from.",
+        "mutation" | "mutate" =>
+            "  A mistake in the copy.\n  \
+             Nearly all of them are useless or bad. Every so often one is \
+             good, and that one gets made again and again.",
+        "evolution" =>
+            "  Living things make copies of themselves, the copies come out a \
+             bit different, and the ones that suit where they live end up \
+             making more copies than the ones that do not.\n  \
+             Do that for four billion years and you get everything.",
+        "lineage" | "lineages" | "species" =>
+            "  One kind of living thing, and everything descended from it.\n  \
+             When one kind splits into two that no longer mix, that is two.",
+        "photosynthesis" | "phototrophy" =>
+            "  Eating light.\n  \
+             Plants do it. It is where nearly all the food on Earth starts.",
+        "predator" | "hunting" =>
+            "  Something that eats other living things instead of making its \
+             own food.",
+        "ozone" =>
+            "  A thin layer of oxygen high above the ground that soaks up the \
+             burny kind of sunlight.\n  \
+             Without it, nothing could live out of the water.",
+        "extinction" | "extinct" =>
+            "  When a kind of living thing has all died and there are no more \
+             of it, ever.",
+        "supernova" =>
+            "  A very big star running out and blowing itself apart.\n  \
+             It makes new kinds of stuff in the blast, and throws them out \
+             into space. Some of that stuff is in you.",
+        "metallicity" | "metals" =>
+            "  How much of the stuff that is not hydrogen exists yet.\n  \
+             At the start the universe only made the two lightest things. \
+             Everything else - the iron, the oxygen, the carbon in you - got \
+             made inside stars and let out when they died.",
+        "redshift" =>
+            "  A way of saying how long ago something was.\n  \
+             Bigger number means longer ago.",
+        "tectonics" | "plate tectonics" =>
+            "  The outside of a world being broken into pieces that slowly move \
+             around and bump into each other.\n  \
+             It makes mountains and volcanoes, and it keeps a world from \
+             getting stuck too hot or too cold.",
+        "greenhouse" =>
+            "  Gas in the air holding heat in, like a blanket on a bed.",
+        "vents" | "hydrothermal" =>
+            "  Cracks at the bottom of the sea where hot water comes out of the \
+             rock.\n  \
+             Life probably started at one of these, because there is energy \
+             there you can use without needing the sun.",
+        "biosphere" =>
+            "  Everything alive on a world, all together, counted as one thing.",
+        "cell" | "cells" =>
+            "  The smallest piece of a living thing that is itself alive.\n  \
+             You are made of a very large number of them. For most of the \
+             history of life, everything alive was just one.",
+        "symbiosis" | "endosymbiosis" =>
+            "  Two different living things living together so closely that \
+             neither works on its own any more.\n  \
+             Sometimes they stop being two things at all.",
+        "gravity" =>
+            "  Everything pulls on everything else. Heavy things pull harder.\n  \
+             It is what gathers dust into worlds and holds you on the ground.",
+        "galaxy" =>
+            "  A very large group of stars, all going round together.\n  \
+             Ours has a few hundred billion in it.",
+        "light year" | "lightyear" =>
+            "  How far light gets in one year. Light is the fastest thing there \
+             is, so this is a very long way.",
+        "seed" =>
+            "  The number you give it at the start.\n  \
+             The same number always makes the same universe, exactly. If you \
+             like one, write the number down.",
+        _ => return None,
+    })
 }
 
 fn bar_words(v: f64) -> &'static str {

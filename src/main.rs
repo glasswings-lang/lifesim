@@ -548,7 +548,9 @@ fn fourth_act(
             // did before this line existed.
             s.flush();
             if s.chronicle.len() > told && t >= skip_until {
-                match explore::prompt(&bio, &p, star, t) {
+                let last = s.chronicle.last().map(|b| b.headline.clone())
+                    .unwrap_or_default();
+                match explore::prompt(&bio, &p, star, t, &last) {
                     explore::Step::Go => {}
                     explore::Step::Advance(n) => { skip_until = t + n; }
                     explore::Step::Release => { exploring = false; }
