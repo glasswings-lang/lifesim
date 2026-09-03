@@ -757,3 +757,116 @@ pub struct Reached {
     pub tools: bool,
     pub civilisation: bool,
 }
+
+impl Species {
+    /// What it is actually like: shape, surface, how it moves, what it would
+    /// be to stand next to.
+    ///
+    /// The other description says what a creature *does* - hunts, breathes
+    /// oxygen, lives in water. That is a specification, not an animal, and you
+    /// cannot picture it. This one is built from the same numbers but answers a
+    /// different question, and it leans on touch, weight and movement rather
+    /// than on colour, because those are the things that actually tell you what
+    /// something is like.
+    pub fn body(&self, gravity: f64, dim_light: bool) -> String {
+        let t = &self.tr;
+        let mut out = String::new();
+
+        // How big, against something you have held.
+        let size = if t[MULTI] < 0.25 {
+            "far too small to see. A smear on glass, and there are millions of them"
+        } else if t[SIZE] < 0.30 {
+            "about the size of a grain of rice"
+        } else if t[SIZE] < 0.45 {
+            "about the size of a coin, and thicker than you would expect"
+        } else if t[SIZE] < 0.60 {
+            "roughly a handful. It would sit in cupped palms with room over"
+        } else if t[SIZE] < 0.78 {
+            "cat-sized, and heavier to lift than it looks"
+        } else {
+            "big enough that you would step back. Dog-sized, and dense with it"
+        };
+        out.push_str(&format!("It is {}.", size));
+
+        // Build, which gravity decides more than anything else.
+        if t[MULTI] > 0.4 {
+            let build = if gravity > 1.4 {
+                " Everything about it is low and braced, legs short and set wide, \
+                  because standing up here costs something"
+            } else if gravity < 0.7 {
+                " It is long and spindly in a way that would not hold together \
+                  on a heavier world"
+            } else {
+                " It is built squat and even, nothing about it exaggerated"
+            };
+            out.push_str(build);
+            out.push('.');
+        }
+
+        // Surface: the thing you would notice with your hands.
+        let skin = if self.land && t[DRY] > 0.6 {
+            "Dry and slightly rough all over, like unglazed clay left in the sun"
+        } else if self.land {
+            "Faintly damp, and cooler than the air"
+        } else if t[SIZE] > 0.6 {
+            "Smooth and firm, with the give of a peeled boiled egg"
+        } else {
+            "Soft, and it flattens where you press and comes back slowly"
+        };
+        out.push_str(&format!(" {}.", skin));
+
+        // Movement, which is most of what an animal is.
+        let motion = if t[MOTIL] > 0.75 {
+            if self.land { "It moves in short violent bursts and then holds \
+                            absolutely still, and the stillness is more \
+                            noticeable than the running" }
+            else { "It goes through the water in one flick of the whole body, \
+                    then coasts, then flicks again" }
+        } else if t[MOTIL] > 0.45 {
+            "It moves steadily and without hurry, and stops the moment it is \
+             looked at directly"
+        } else if t[MOTIL] > 0.2 {
+            "It shifts position over minutes rather than seconds. You notice it \
+             has moved rather than seeing it move"
+        } else {
+            "It does not move at all, and after a while that stops being strange"
+        };
+        out.push_str(&format!(" {}.", motion));
+
+        // Senses. In dim red light, eyes are a poor investment.
+        if t[SENSE] > 0.35 {
+            let sense = if dim_light {
+                "It has no eyes worth the name. What it has instead are fine \
+                 feelers along its length that read the water, or the air, for \
+                 movement, and they are always going"
+            } else if t[SENSE] > 0.7 {
+                "It has several eyes, set well apart, and they track separately"
+            } else {
+                "It has eyes, small and set low, and it uses them less than it \
+                 uses whatever the feelers are doing"
+            };
+            out.push_str(&format!(" {}.", sense));
+        }
+
+        // Feeding apparatus, only if it is doing something specific.
+        if self.is_predator() && t[SIZE] > 0.4 {
+            out.push_str(" The front end opens wider than seems reasonable.");
+        } else if t[PHOTO] > 0.55 {
+            out.push_str(" Most of it is spread thin and flat, turned toward \
+                          whatever light there is.");
+        }
+
+        if t[MANIP] > 0.45 {
+            out.push_str(" It has something at the front it can hold things with, \
+                          and it does, constantly, whether or not there is a reason.");
+        }
+        if t[SYMB] > 0.65 {
+            out.push_str(" Something smaller lives on it, and neither of them \
+                          appears to mind.");
+        }
+        if t[SOCIAL] > 0.5 {
+            out.push_str(" You will never see just one.");
+        }
+        out
+    }
+}

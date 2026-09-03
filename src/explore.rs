@@ -78,7 +78,7 @@ pub fn prompt(bio: &Biosphere, p: &Planet, star: &Star, t: f64, last: &str) -> S
                 return Step::More(if myr > 0.0 { myr } else { 3000.0 });
             }
             "q" | "quit" | "exit" => return Step::Quit,
-            "look" | "l" => look(bio, &arg),
+            "look" | "l" => look(bio, p, star, &arg),
             "back" | "parent" => back(bio, &arg),
             "kin" | "children" => kin(bio, &arg),
             "life" | "who" | "alive" => who(bio, &arg),
@@ -113,7 +113,7 @@ fn help() {
 }
 
 /// One lineage, in as much depth as exists.
-fn look(bio: &Biosphere, name: &str) {
+fn look(bio: &Biosphere, planet: &Planet, star: &Star, name: &str) {
     if name.is_empty() { println!("Look at what? Try: look {}", any_name(bio)); return; }
     let Some(a) = bio.find(name) else {
         println!("Nothing here called \"{}\". Try: life", name);
@@ -122,6 +122,14 @@ fn look(bio: &Biosphere, name: &str) {
     println!();
     println!("{}", a.name);
     println!("  {}.", a.desc);
+    if let Some(sp) = bio.alive(a.id) {
+        // A red dwarf gives so little visible light that eyes are a poor
+        // investment, so what a creature evolved under changes what it has.
+        let dim = star.teff < 4200.0;
+        for l in crate::narrate::wrap(&sp.body(planet.gravity(), dim), 74, 2) {
+            println!("  {}", l.trim_start());
+        }
+    }
     match bio.alive(a.id) {
         Some(sp) => {
             println!("  Alive. {} of everything living.", pct(sp.share));
@@ -630,10 +638,11 @@ pub fn dump_json(bio: &Biosphere, p: &Planet, star: &Star, seed: u64, path: &str
         writeln!(f, "    {{ \"name\": \"{}\", \"description\": \"{}\", \
 \"lives_on_land\": {}, \"share\": {:.5}, \"appeared_myr\": {:.0}, \
 \"genes\": {}, \"came_from\": \"{}\", \"hunts\": {}, \"makes_own_food\": {}, \
-\"traits\": {{ {} }} }}{}",
+\"traits\": {{ {} }}, \"body\": \"{}\" }}{}",
             esc(&sp.name), esc(&sp.describe()), sp.land, sp.share, sp.born,
             sp.genome.genes.len(), esc(&parent), sp.is_predator(),
             sp.is_producer(), traits,
+            esc(&sp.body(p.gravity(), star.teff < 4200.0)),
             if i + 1 < rows.len() { "," } else { "" })?;
     }
     writeln!(f, "  ]")?;

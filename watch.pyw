@@ -137,10 +137,11 @@ class Window(wx.Frame):
         self.new_btn = wx.Button(panel, label="&Start a new world")
         self.more_btn = wx.Button(panel, label="&Keep going")
         self.find_btn = wx.Button(panel, label="&Find a world where something happens")
+        self.tff_btn = wx.Button(panel, label="Send a creature to &Time for Family")
         self.speak_btn = wx.Button(panel, label="&Speech: on")
         for b in (self.next_btn, self.huh_btn, self.life_btn,
                   self.world_btn, self.more_btn, self.new_btn, self.find_btn,
-                  self.speak_btn):
+                  self.tff_btn, self.speak_btn):
             btns.Add(b, 0, wx.RIGHT, 6)
         root.Add(btns, 0, wx.LEFT | wx.RIGHT | wx.BOTTOM, 8)
 
@@ -153,6 +154,7 @@ class Window(wx.Frame):
         self.more_btn.Bind(wx.EVT_BUTTON, lambda e: self.send("more"))
         self.new_btn.Bind(wx.EVT_BUTTON, self.on_new)
         self.find_btn.Bind(wx.EVT_BUTTON, self.on_find)
+        self.tff_btn.Bind(wx.EVT_BUTTON, self.on_tff)
         self.speak_btn.Bind(wx.EVT_BUTTON, self.on_speak_toggle)
         self.ask.Bind(wx.EVT_TEXT_ENTER, self.on_ask)
 
@@ -251,6 +253,46 @@ class Window(wx.Frame):
                 return
             out.put(("tried", attempt, ""))
         out.put(("gave-up", 0, ""))
+
+    def on_tff(self, _evt) -> None:
+        """Send one creature over to Time for Family, without a terminal."""
+        dlg = wx.TextEntryDialog(
+            self, "Which creature? Leave it empty for the most interesting one.\n"
+                  "Use the 'What is alive' button first if you want to pick by name.",
+            "Send a creature to Time for Family", "")
+        if dlg.ShowModal() != wx.ID_OK:
+            dlg.Destroy()
+            return
+        who = dlg.GetValue().strip()
+        dlg.Destroy()
+        self.tff_btn.Disable()
+        self.announce("Working out this world in full, then writing the creature "
+                      "over. This takes a few seconds.")
+        threading.Thread(target=self._to_tff, args=(who,), daemon=True).start()
+
+    def _to_tff(self, who: str) -> None:
+        world = os.path.join(HERE, "world.json")
+        flags = getattr(subprocess, "CREATE_NO_WINDOW", 0)
+        try:
+            r = subprocess.run(
+                [EXE, "run", "--seed", str(self.seed), "--narrator", "builtin",
+                 "--detail", "brief", "--dump", world],
+                capture_output=True, text=True, timeout=600, creationflags=flags)
+            if not os.path.isfile(world):
+                raise RuntimeError(r.stderr.strip() or "the world could not be written")
+            cmd = [sys.executable, os.path.join(HERE, "to_tff.py"), "--force"]
+            if who:
+                cmd.insert(2, who)
+            r2 = subprocess.run(cmd, capture_output=True, text=True,
+                                timeout=120, creationflags=flags)
+            msg = (r2.stdout or r2.stderr).strip() or "Done."
+        except Exception as e:
+            msg = f"That did not work: {e}"
+        wx.CallAfter(self._tff_done, msg)
+
+    def _tff_done(self, msg: str) -> None:
+        self.tff_btn.Enable()
+        self.announce(msg)
 
     def on_speak_toggle(self, _evt) -> None:
         self.speaking = not self.speaking

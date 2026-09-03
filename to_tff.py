@@ -149,6 +149,13 @@ def describe(c: dict, world: dict, star: dict) -> str:
              else "a mostly dry world")
     origin = (f"It evolved on {water}, under {star['colour']} light, and it is "
               f"built for {where}.")
+    # The simulation now writes a physical description of its own, worked out
+    # from the same traits: size against something you have held, how it moves,
+    # what its surface would feel like, whether it has eyes at all. That is far
+    # better than anything assembled out here, so prefer it when it is present.
+    body = c.get("body")
+    if body:
+        return f"{body} {origin}"
     # The fragments are clauses, not sentences. Joining them with full stops
     # produced "Large and unhurried. moves in fast bursts."
     return f"{bits[0]}, {bits[1]}, {bits[2]}. {origin}"
@@ -283,7 +290,7 @@ def export(c: dict, data: dict, tff: str, force: bool) -> None:
     write_pool(os.path.join(text_dir, "descriptions.txt"),
                [f"{c['name']} descriptions. One per line.", origin,
                 "Edit freely -- these are a starting point, not a fixed set."],
-               [describe(c, world, star)] + [
+               [describe(c, world, star)] + ([c["body"]] if c.get("body") else []) + [
                    "It has the particular stillness of something that was never "
                    "in a hurry to begin with.",
                    "Up close it is stranger than it looks from across a room.",
