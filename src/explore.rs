@@ -594,3 +594,49 @@ fn bar_words(v: f64) -> &'static str {
 fn any_name(bio: &Biosphere) -> String {
     bio.species.first().map(|s| s.name.clone()).unwrap_or_else(|| "something".into())
 }
+
+/// Write the finished world out as JSON, so other programs can do something
+/// with the creatures that lived in it. Hand-rolled rather than pulling in a
+/// serialiser: the shape is small and fixed.
+pub fn dump_json(bio: &Biosphere, p: &Planet, star: &Star, seed: u64, path: &str)
+    -> std::io::Result<()>
+{
+    use std::io::Write as _;
+    let esc = |s: &str| s.replace('\\', "\\\\").replace('"', "\\\"");
+    let mut f = std::fs::File::create(path)?;
+    writeln!(f, "{{")?;
+    writeln!(f, "  \"seed\": \"{}\",", seed)?;
+    writeln!(f, "  \"star\": {{ \"mass\": {:.3}, \"brightness\": {:.4}, \
+\"temperature_k\": {:.0}, \"colour\": \"{}\", \"class\": \"{}\" }},",
+        star.mass, star.lum, star.teff, esc(colour(star.teff)),
+        spectral_class(star.teff))?;
+    writeln!(f, "  \"world\": {{ \"name\": \"{}\", \"kind\": \"{}\", \
+\"gravity_g\": {:.3}, \"oceans\": {:.2}, \"day_hours\": {:.1}, \
+\"surface_k\": {:.1}, \"oxygen\": {:.4}, \"land_liveable\": {}, \
+\"age_myr\": {:.0} }},",
+        esc(&p.name), esc(kind_name(p.kind)), p.gravity(), p.water, p.day_hours,
+        bio.env.t_surf, bio.env.o2, bio.env.land_open, bio.myr)?;
+    writeln!(f, "  \"creatures\": [")?;
+    let mut rows: Vec<&Species> = bio.species.iter().collect();
+    rows.sort_by(|a, b| b.share.partial_cmp(&a.share).unwrap());
+    for (i, sp) in rows.iter().enumerate() {
+        let parent = bio.archive.iter().find(|x| x.id == sp.parent)
+            .map(|x| x.name.clone()).unwrap_or_default();
+        let mut traits = String::new();
+        for k in 0..N_CH {
+            if k > 0 { traits.push_str(", "); }
+            traits.push_str(&format!("\"{}\": {:.3}", CH_NAMES[k], sp.tr[k]));
+        }
+        writeln!(f, "    {{ \"name\": \"{}\", \"description\": \"{}\", \
+\"lives_on_land\": {}, \"share\": {:.5}, \"appeared_myr\": {:.0}, \
+\"genes\": {}, \"came_from\": \"{}\", \"hunts\": {}, \"makes_own_food\": {}, \
+\"traits\": {{ {} }} }}{}",
+            esc(&sp.name), esc(&sp.describe()), sp.land, sp.share, sp.born,
+            sp.genome.genes.len(), esc(&parent), sp.is_predator(),
+            sp.is_producer(), traits,
+            if i + 1 < rows.len() { "," } else { "" })?;
+    }
+    writeln!(f, "  ]")?;
+    writeln!(f, "}}")?;
+    Ok(())
+}

@@ -78,6 +78,7 @@ struct Config {
     ollama_host: Option<String>,
     explore: bool,
     terse: bool,
+    dump: Option<String>,
 }
 
 fn parse(args: &[String], watching: bool) -> Result<Config, String> {
@@ -94,6 +95,7 @@ fn parse(args: &[String], watching: bool) -> Result<Config, String> {
         ollama_host: None,
         explore: false,
         terse: false,
+        dump: None,
     };
     let mut i = 0;
     while i < args.len() {
@@ -146,6 +148,7 @@ fn parse(args: &[String], watching: bool) -> Result<Config, String> {
             "--persist" => { cfg.persist = true; i += 1; }
             "--toast" => { cfg.toast = true; i += 1; }
             "--terse" => { cfg.terse = true; i += 1; }
+            "--dump" => { cfg.dump = Some(need(i)?); i += 2; }
             o => return Err(format!("I do not know the option \"{}\".", o)),
         }
     }
@@ -274,6 +277,13 @@ fn run(cfg: Config) {
     let (outcome, world) = fourth_act(&mut s, &mut life_rng, &star, &home,
                                       cfg.persist, cfg.explore);
     closing(&mut s, cfg.seed, Some(outcome));
+
+    if let (Some(path), Some((bio, planet))) = (cfg.dump.as_ref(), world.as_ref()) {
+        match explore::dump_json(bio, planet, &star, cfg.seed, path) {
+            Ok(()) => eprintln!("(wrote {})", path),
+            Err(e) => eprintln!("(could not write {}: {})", path, e),
+        }
+    }
 
     // Stay open afterwards. Nothing is running any more and no more time will
     // pass, but everything that lived here is still here to be asked about.

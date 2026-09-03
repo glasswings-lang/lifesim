@@ -6,3 +6,5 @@
 *.log
 run*.txt
 universe*.txt
+world.json
+*.world.json
